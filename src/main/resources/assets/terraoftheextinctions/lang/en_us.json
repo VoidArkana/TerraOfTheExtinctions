@@ -1,0 +1,37 @@
+{
+  "creativetab.terraoftheextinctions": "Terra of the Extinctions",
+
+  "item.terraoftheextinctions.olives": "Olives",
+
+  "block.terraoftheextinctions.olive_planks": "Olive Planks",
+  "block.terraoftheextinctions.olive_stairs": "Olive Stairs",
+  "block.terraoftheextinctions.olive_slab": "Olive Slab",
+  "block.terraoftheextinctions.olive_button": "Olive Button",
+  "block.terraoftheextinctions.olive_pressure_plate": "Olive Pressure Plate",
+  "block.terraoftheextinctions.olive_fence": "Olive Fence",
+  "block.terraoftheextinctions.olive_fence_gate": "Olive Fence Gate",
+
+  "block.terraoftheextinctions.olive_door": "Olive Door",
+  "block.terraoftheextinctions.olive_trapdoor": "Olive Trapdoor",
+
+  "block.terraoftheextinctions.olive_log": "Olive Log",
+  "block.terraoftheextinctions.stripped_olive_log": "Stripped Olive Log",
+  "block.terraoftheextinctions.olive_wood": "Olive Wood",
+  "block.terraoftheextinctions.stripped_olive_wood": "Stripped Olive Wood",
+
+  "block.terraoftheextinctions.olive_sign": "Olive Sign",
+  "block.terraoftheextinctions.olive_wall_sign": "Olive Sign",
+  "block.terraoftheextinctions.olive_wall_hanging_sign": "Olive Hanging Sign",
+  "block.terraoftheextinctions.olive_hanging_sign": "Olive Hanging Sign",
+
+  "block.terraoftheextinctions.olive_leaves": "Olive Leaves",
+  "block.terraoftheextinctions.olive_sapling": "Olive Sapling",
+  "block.terraoftheextinctions.potted_olive_sapling": "Potted Olive Sapling",
+
+  "item.terraoftheextinctions.olive_boat": "Olive Boat",
+  "item.terraoftheextinctions.olive_chest_boat": "Olive Boat with Chest",
+  "entity.terraoftheextinctions.mod_boat": "Boat",
+  "entity.terraoftheextinctions.mod_chest_boat": "Boat with Chest",
+
+  "terraoftheextinction.subtitles.block.olive_leaves.pick_olives": "Olives pop"
+}

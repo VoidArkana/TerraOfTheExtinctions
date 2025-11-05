@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "terraoftheextinctions:block/olive_leaves"
+    },
+    "age=1": {
+      "model": "terraoftheextinctions:block/olive_leaves_with_olives"
+    }
+  }
+}

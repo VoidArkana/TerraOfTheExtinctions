@@ -1,0 +1,11 @@
+{
+  "block.olive_leaves.pick_olives": {
+    "sounds": [
+      {
+        "name": "block.sweet_berry_bush.pick_berries",
+        "type": "event"
+      }
+    ],
+    "subtitle": "terraoftheextinction.subtitles.block.olive_leaves.pick_olives"
+  }
+}
