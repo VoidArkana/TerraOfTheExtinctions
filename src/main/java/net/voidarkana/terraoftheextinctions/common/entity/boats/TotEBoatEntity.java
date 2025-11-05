@@ -1,4 +1,4 @@
-package net.voidarkana.terraoftheextinctions.common.entity;
+package net.voidarkana.terraoftheextinctions.common.entity.boats;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;

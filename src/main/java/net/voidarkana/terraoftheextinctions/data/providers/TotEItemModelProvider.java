@@ -23,6 +23,8 @@ public class TotEItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
 
+        withExistingParent(TotEItems.BLEAK_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
         // OLIVE
         simpleItem(TotEItems.OLIVES);
         simpleBlockItem(TotEBlocks.OLIVE_DOOR);

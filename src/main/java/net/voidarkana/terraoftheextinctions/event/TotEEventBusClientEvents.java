@@ -10,6 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
 import net.voidarkana.terraoftheextinctions.client.TotEModelLayers;
+import net.voidarkana.terraoftheextinctions.client.models.BleakModel;
 import net.voidarkana.terraoftheextinctions.registry.TotEBlockEntities;
 
 @Mod.EventBusSubscriber(modid = TerraOfTheExtinctions.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -19,6 +20,8 @@ public class TotEEventBusClientEvents {
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(TotEModelLayers.OLIVE_BOAT_LAYER, BoatModel::createBodyModel);
         event.registerLayerDefinition(TotEModelLayers.OLIVE_CHEST_BOAT_LAYER, ChestBoatModel::createBodyModel);
+
+        event.registerLayerDefinition(TotEModelLayers.BLEAK_LAYER, BleakModel::createBodyLayer);
     }
 
     @SubscribeEvent

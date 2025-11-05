@@ -12,8 +12,8 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
-import net.voidarkana.terraoftheextinctions.common.entity.TotEBoatEntity;
-import net.voidarkana.terraoftheextinctions.common.entity.TotEChestBoatEntity;
+import net.voidarkana.terraoftheextinctions.common.entity.boats.TotEBoatEntity;
+import net.voidarkana.terraoftheextinctions.common.entity.boats.TotEChestBoatEntity;
 
 import java.util.Map;
 import java.util.stream.Stream;

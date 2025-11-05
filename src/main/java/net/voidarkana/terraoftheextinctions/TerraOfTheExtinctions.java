@@ -1,5 +1,6 @@
 package net.voidarkana.terraoftheextinctions;
 
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -12,6 +13,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.voidarkana.terraoftheextinctions.client.ClientEvents;
+import net.voidarkana.terraoftheextinctions.client.renderers.BleakRenderer;
+import net.voidarkana.terraoftheextinctions.common.entity.TotEEntityPlacements;
+import net.voidarkana.terraoftheextinctions.common.event.TotEEvents;
 import net.voidarkana.terraoftheextinctions.registry.*;
 
 @Mod(TerraOfTheExtinctions.MOD_ID)
@@ -32,6 +36,7 @@ public class TerraOfTheExtinctions
         TotECreativeTab.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new TotEEvents());
 
         bus.addListener(this::commonSetup);
         bus.addListener(this::clientSetup);
@@ -39,6 +44,7 @@ public class TerraOfTheExtinctions
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(()->{
+            TotEEntityPlacements.entityPlacement();
 
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(TotEBlocks.OLIVE_SAPLING.getId(), TotEBlocks.POTTED_OLIVE_SAPLING);
 
@@ -49,6 +55,10 @@ public class TerraOfTheExtinctions
 
     private void clientSetup(final FMLClientSetupEvent event) {
         MinecraftForge.EVENT_BUS.register(new ClientEvents());
+
+        event.enqueueWork(()->{
+            EntityRenderers.register(TotEEntities.BLEAK.get(), BleakRenderer::new);
+        });
     }
 
 

@@ -33,5 +33,8 @@
   "entity.terraoftheextinctions.mod_boat": "Boat",
   "entity.terraoftheextinctions.mod_chest_boat": "Boat with Chest",
 
-  "terraoftheextinction.subtitles.block.olive_leaves.pick_olives": "Olives pop"
+  "terraoftheextinction.subtitles.block.olive_leaves.pick_olives": "Olives pop",
+
+  "entity.terraoftheextinctions.bleak": "Bleak",
+  "item.terraoftheextinctions.bleak_spawn_egg": "Bleak Spawn Egg"
 }

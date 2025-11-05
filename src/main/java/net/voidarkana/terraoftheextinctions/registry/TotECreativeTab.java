@@ -18,6 +18,8 @@ public class TotECreativeTab {
                     .title(Component.translatable("creativetab.terraoftheextinctions"))
                     .displayItems((itemDisplayParameters, output) -> {
 
+                        output.accept(TotEItems.BLEAK_SPAWN_EGG.get());
+
                         output.accept(TotEItems.OLIVES.get());
 
                         output.accept(TotEBlocks.OLIVE_PLANKS.get());

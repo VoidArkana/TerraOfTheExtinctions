@@ -11,7 +11,7 @@ import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
 import net.voidarkana.terraoftheextinctions.client.renderers.TotEBoatRenderer;
 import net.voidarkana.terraoftheextinctions.registry.TotEEntities;
 
-@Mod.EventBusSubscriber(modid = TerraOfTheE, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = TerraOfTheExtinctions.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEvents {
 
     @SubscribeEvent

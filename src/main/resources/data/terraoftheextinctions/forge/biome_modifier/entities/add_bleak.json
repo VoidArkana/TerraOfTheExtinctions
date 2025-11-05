@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#terraoftheextinctions:bleak_biomes",
+  "spawners": {
+    "type": "terraoftheextinctions:bleak",
+    "weight": 7,
+    "minCount": 10,
+    "maxCount": 20,
+    "category": "water_creature"
+  }
+}

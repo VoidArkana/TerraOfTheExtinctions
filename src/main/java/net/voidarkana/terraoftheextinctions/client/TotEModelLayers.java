@@ -11,6 +11,9 @@ public class TotEModelLayers {
     public static final ModelLayerLocation OLIVE_CHEST_BOAT_LAYER = new ModelLayerLocation(
             new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "chest_boat/olive"), "main");
 
+    public static final ModelLayerLocation BLEAK_LAYER = new ModelLayerLocation(
+            new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "bleak"), "main");
+
     private static ModelLayerLocation create(String name) {
         return new ModelLayerLocation(new ResourceLocation(TerraOfTheExtinctions.MOD_ID, name), "main");
     }

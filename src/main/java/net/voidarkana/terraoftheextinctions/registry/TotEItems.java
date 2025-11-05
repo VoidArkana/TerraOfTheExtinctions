@@ -3,11 +3,13 @@ package net.voidarkana.terraoftheextinctions.registry;
 import net.minecraft.world.item.HangingSignItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SignItem;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
-import net.voidarkana.terraoftheextinctions.common.entity.TotEBoatEntity;
+import net.voidarkana.terraoftheextinctions.common.entity.boats.TotEBoatEntity;
 import net.voidarkana.terraoftheextinctions.common.item.TotEBoatItem;
 
 public class TotEItems {
@@ -29,5 +31,9 @@ public class TotEItems {
             () -> new TotEBoatItem(false, TotEBoatEntity.Type.OLIVE, new Item.Properties()));
     public static final RegistryObject<Item> OLIVE_CHEST_BOAT = ITEMS.register("olive_chest_boat",
             () -> new TotEBoatItem(true, TotEBoatEntity.Type.OLIVE, new Item.Properties()));
+
+
+    public static final RegistryObject<Item> BLEAK_SPAWN_EGG = ITEMS.register("bleak_spawn_egg",
+            () -> new ForgeSpawnEggItem(TotEEntities.BLEAK, 0x3f4c4a, 0x74756e, new Item.Properties()));
 
 }

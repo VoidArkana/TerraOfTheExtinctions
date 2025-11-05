@@ -15,8 +15,8 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.voidarkana.terraoftheextinctions.common.entity.TotEBoatEntity;
-import net.voidarkana.terraoftheextinctions.common.entity.TotEChestBoatEntity;
+import net.voidarkana.terraoftheextinctions.common.entity.boats.TotEBoatEntity;
+import net.voidarkana.terraoftheextinctions.common.entity.boats.TotEChestBoatEntity;
 
 import java.util.List;
 import java.util.function.Predicate;
