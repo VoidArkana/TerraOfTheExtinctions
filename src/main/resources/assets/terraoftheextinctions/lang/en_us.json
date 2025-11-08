@@ -36,5 +36,11 @@
   "terraoftheextinction.subtitles.block.olive_leaves.pick_olives": "Olives pop",
 
   "entity.terraoftheextinctions.bleak": "Bleak",
-  "item.terraoftheextinctions.bleak_spawn_egg": "Bleak Spawn Egg"
+  "item.terraoftheextinctions.bleak_spawn_egg": "Bleak Spawn Egg",
+
+  "entity.terraoftheextinctions.perch": "Perch",
+  "item.terraoftheextinctions.perch_spawn_egg": "Perch Spawn Egg",
+  "item.terraoftheextinctions.perch_scales": "Perch Scales",
+  "item.terraoftheextinctions.perch_bucket": "Bucket of Perch",
+  "block.terraoftheextinctions.perch_roe": "Perch Roe"
 }

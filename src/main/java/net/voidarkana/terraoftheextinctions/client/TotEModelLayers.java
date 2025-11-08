@@ -13,6 +13,8 @@ public class TotEModelLayers {
 
     public static final ModelLayerLocation BLEAK_LAYER = new ModelLayerLocation(
             new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "bleak"), "main");
+    public static final ModelLayerLocation PERCH_LAYER = new ModelLayerLocation(
+            new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "perch"), "main");
 
     private static ModelLayerLocation create(String name) {
         return new ModelLayerLocation(new ResourceLocation(TerraOfTheExtinctions.MOD_ID, name), "main");

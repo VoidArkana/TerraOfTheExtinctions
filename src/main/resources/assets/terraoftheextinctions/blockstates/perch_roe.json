@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "terraoftheextinctions:block/perch_roe",
+        "y" : 90
+      },
+      {
+        "model": "terraoftheextinctions:block/perch_roe",
+        "y" : 180
+      },
+      {
+        "model": "terraoftheextinctions:block/perch_roe",
+        "y" : 270
+      },
+      {
+        "model": "terraoftheextinctions:block/perch_roe"
+      }
+    ]
+  }
+}

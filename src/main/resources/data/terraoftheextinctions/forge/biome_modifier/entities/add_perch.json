@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#terraoftheextinctions:perch_biomes",
+  "spawners": {
+    "type": "terraoftheextinctions:perch",
+    "weight": 8,
+    "minCount": 2,
+    "maxCount": 5,
+    "category": "water_creature"
+  }
+}

@@ -14,14 +14,19 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.voidarkana.terraoftheextinctions.client.ClientEvents;
 import net.voidarkana.terraoftheextinctions.client.renderers.BleakRenderer;
+import net.voidarkana.terraoftheextinctions.client.renderers.PerchRenderer;
 import net.voidarkana.terraoftheextinctions.common.entity.TotEEntityPlacements;
 import net.voidarkana.terraoftheextinctions.common.event.TotEEvents;
 import net.voidarkana.terraoftheextinctions.registry.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mod(TerraOfTheExtinctions.MOD_ID)
 public class TerraOfTheExtinctions
 {
     public static final String MOD_ID = "terraoftheextinctions";
+    public static final List<Runnable> CALLBACKS = new ArrayList<>();
 
     public TerraOfTheExtinctions()
     {
@@ -57,7 +62,12 @@ public class TerraOfTheExtinctions
         MinecraftForge.EVENT_BUS.register(new ClientEvents());
 
         event.enqueueWork(()->{
+
+            TerraOfTheExtinctions.CALLBACKS.forEach(Runnable::run);
+            TerraOfTheExtinctions.CALLBACKS.clear();
+
             EntityRenderers.register(TotEEntities.BLEAK.get(), BleakRenderer::new);
+            EntityRenderers.register(TotEEntities.PERCH.get(), PerchRenderer::new);
         });
     }
 

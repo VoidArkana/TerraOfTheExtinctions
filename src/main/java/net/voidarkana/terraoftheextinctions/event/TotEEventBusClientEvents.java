@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
 import net.voidarkana.terraoftheextinctions.client.TotEModelLayers;
 import net.voidarkana.terraoftheextinctions.client.models.BleakModel;
+import net.voidarkana.terraoftheextinctions.client.models.PerchModel;
 import net.voidarkana.terraoftheextinctions.registry.TotEBlockEntities;
 
 @Mod.EventBusSubscriber(modid = TerraOfTheExtinctions.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -22,6 +23,7 @@ public class TotEEventBusClientEvents {
         event.registerLayerDefinition(TotEModelLayers.OLIVE_CHEST_BOAT_LAYER, ChestBoatModel::createBodyModel);
 
         event.registerLayerDefinition(TotEModelLayers.BLEAK_LAYER, BleakModel::createBodyLayer);
+        event.registerLayerDefinition(TotEModelLayers.PERCH_LAYER, PerchModel::createBodyLayer);
     }
 
     @SubscribeEvent

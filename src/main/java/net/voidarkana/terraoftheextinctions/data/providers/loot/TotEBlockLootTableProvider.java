@@ -17,6 +17,8 @@ public class TotEBlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        this.dropWhenSilkTouch(TotEBlocks.PERCH_ROE.get());
+
         this.dropSelf(TotEBlocks.OLIVE_PLANKS.get());
         this.dropSelf(TotEBlocks.OLIVE_STAIRS.get());
         this.dropSelf(TotEBlocks.OLIVE_FENCE.get());

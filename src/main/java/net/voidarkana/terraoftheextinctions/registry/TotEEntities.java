@@ -9,6 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.Bleak;
+import net.voidarkana.terraoftheextinctions.common.entity.animals.Perch;
 import net.voidarkana.terraoftheextinctions.common.entity.boats.TotEBoatEntity;
 import net.voidarkana.terraoftheextinctions.common.entity.boats.TotEChestBoatEntity;
 
@@ -28,6 +29,12 @@ public class TotEEntities {
                     () -> EntityType.Builder.of(Bleak::new, MobCategory.WATER_AMBIENT)
                             .sized(0.45f, 0.3f)
                             .build(new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "bleak").toString()));
+
+    public static final RegistryObject<EntityType<Perch>> PERCH =
+            ENTITY_TYPES.register("perch",
+                    () -> EntityType.Builder.of(Perch::new, MobCategory.WATER_AMBIENT)
+                            .sized(0.7f, 0.6f)
+                            .build(new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "perch").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

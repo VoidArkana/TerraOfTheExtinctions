@@ -1,0 +1,6 @@
+{
+  "parent": "terraoftheextinctions:block/fish_roe_block",
+  "textures": {
+    "all": "terraoftheextinctions:block/perch_roe"
+  }
+}

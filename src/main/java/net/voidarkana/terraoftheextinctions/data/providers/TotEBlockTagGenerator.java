@@ -3,6 +3,7 @@ package net.voidarkana.terraoftheextinctions.data.providers;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
@@ -21,6 +22,13 @@ public class TotEBlockTagGenerator extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+
+        this.tag(TotETags.Blocks.AQUATIC_PLANTS).add(Blocks.SEAGRASS).add(Blocks.TALL_SEAGRASS)
+                .add(Blocks.KELP_PLANT).add(Blocks.KELP_PLANT);
+
+        this.tag(TotETags.Blocks.PERCH_ROE_NESTS).add(Blocks.DIRT).add(Blocks.GRAVEL);
+
+        this.tag(TotETags.Blocks.PERCH_FOOD).add(TotEBlocks.PERCH_ROE.get());
 
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(
                 TotEBlocks.OLIVE_PLANKS.get(),

@@ -11,6 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
+import net.voidarkana.terraoftheextinctions.common.blocks.FishRoeBlock;
 import net.voidarkana.terraoftheextinctions.common.blocks.FlammableWoodLogBlock;
 import net.voidarkana.terraoftheextinctions.common.blocks.OliveLeavesBlock;
 import net.voidarkana.terraoftheextinctions.common.blocks.signs.TotEHangingSignBlock;
@@ -83,6 +84,10 @@ public class TotEBlocks {
     public static final RegistryObject<Block> POTTED_OLIVE_SAPLING = registerBlock("potted_olive_sapling",
             () -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), TotEBlocks.OLIVE_SAPLING,
                     BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM).noOcclusion()));
+
+    //Fish Roe
+    public static final RegistryObject<Block> PERCH_ROE = registerBlock("perch_roe",
+            () -> new FishRoeBlock(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak(), TotEEntities.PERCH));
 
     private static <T extends Block> Supplier<T> create(String key, Supplier<T> block) {
         return BLOCKS.register(key, block);

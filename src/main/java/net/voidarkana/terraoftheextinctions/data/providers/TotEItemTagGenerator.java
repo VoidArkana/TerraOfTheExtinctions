@@ -5,6 +5,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
 import net.voidarkana.terraoftheextinctions.registry.TotEBlocks;
@@ -23,6 +24,8 @@ public class TotEItemTagGenerator extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
 
         this.copy(TotETags.Blocks.OLIVE_LOG_BLOCK, TotETags.Items.OLIVE_LOG_ITEM);
+
+        this.tag(TotETags.Items.PERCH_FOOD).addTag(ItemTags.FISHES).add(TotEItems.FISH_MEAT.get());
 
         this.tag(ItemTags.LOGS_THAT_BURN)
                 .addTag(TotETags.Items.OLIVE_LOG_ITEM);

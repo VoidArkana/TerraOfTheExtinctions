@@ -14,11 +14,18 @@ public class TotECreativeTab {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TerraOfTheExtinctions.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> TERRA_OF_THE_EXTINCTIONS =
-            CREATIVE_MODE_TABS.register("terraoftheextinctions", ()-> CreativeModeTab.builder().icon(() -> new ItemStack(TotEItems.OLIVES.get()))
+            CREATIVE_MODE_TABS.register("terraoftheextinctions", ()-> CreativeModeTab.builder().icon(() -> new ItemStack(TotEItems.PERCH_SCALES.get()))
                     .title(Component.translatable("creativetab.terraoftheextinctions"))
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(TotEItems.BLEAK_SPAWN_EGG.get());
+                        output.accept(TotEItems.PERCH_SPAWN_EGG.get());
+
+                        output.accept(TotEItems.FISH_MEAT.get());
+
+                        output.accept(TotEItems.PERCH_BUCKET.get());
+                        output.accept(TotEBlocks.PERCH_ROE.get());
+                        output.accept(TotEItems.PERCH_SCALES.get());
 
                         output.accept(TotEItems.OLIVES.get());
 

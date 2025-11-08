@@ -8,5 +8,6 @@ import net.voidarkana.terraoftheextinctions.registry.TotEEntities;
 public class TotEEntityPlacements {
     public  static void entityPlacement() {
         SpawnPlacements.register(TotEEntities.BLEAK.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules);
+        SpawnPlacements.register(TotEEntities.PERCH.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules);
     }
 }

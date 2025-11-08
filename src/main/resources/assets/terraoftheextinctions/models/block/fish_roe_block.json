@@ -1,0 +1,19 @@
+{
+    "render_type": "minecraft:cutout",
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "#all",
+        "texture": "#all"
+    },
+    "elements": [
+        {
+            "from": [0, 0.1, 0],
+            "to": [16, 0.1, 16],
+            "rotation": {"angle": 0, "axis": "x", "origin": [0, 0, 16]},
+            "faces": {
+                "up": {"uv": [0, 0, 16, 16], "texture": "#texture"},
+                "down": {"uv": [16, 0, 0, 16], "rotation": 180, "texture": "#texture"}
+            }
+        }
+    ]
+}
