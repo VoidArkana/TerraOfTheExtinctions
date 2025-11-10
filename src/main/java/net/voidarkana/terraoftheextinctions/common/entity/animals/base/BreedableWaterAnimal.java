@@ -90,6 +90,7 @@ public abstract class BreedableWaterAnimal extends WaterAnimal implements Bucket
         }
 
         BreedableWaterAnimal.AgeableFishGroupData ageablemob$ageablemobgroupdata = (BreedableWaterAnimal.AgeableFishGroupData)pSpawnData;
+
         if (ageablemob$ageablemobgroupdata.isShouldSpawnBaby() && ageablemob$ageablemobgroupdata.getGroupSize() > 0 && pLevel.getRandom().nextFloat() <= ageablemob$ageablemobgroupdata.getBabySpawnChance()) {
             this.setAge(-24000);
         }
@@ -239,6 +240,8 @@ public abstract class BreedableWaterAnimal extends WaterAnimal implements Bucket
             this.setDeltaMovement(this.getDeltaMovement().scale(0.9D));
             if (this.getTarget() == null && this.canFloat()) {
                 this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.005D, 0.0D));
+            }else if (!this.canFloat()){
+                this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.0025D, 0.0D));
             }
         } else {
             super.travel(pTravelVector);
@@ -556,11 +559,6 @@ public abstract class BreedableWaterAnimal extends WaterAnimal implements Bucket
                 double d2 = this.random.nextGaussian() * 0.02D;
                 this.level().addParticle(ParticleTypes.HEART, this.getRandomX(1.0D), this.getRandomY() + 0.5D, this.getRandomZ(1.0D), d0, d1, d2);
             }
-        }
-
-        if (this.getAge() >- 500){
-            int i = this.getAge();
-            this.setAge(i-6000);
         }
 
     }

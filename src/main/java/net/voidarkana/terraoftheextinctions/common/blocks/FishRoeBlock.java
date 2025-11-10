@@ -24,6 +24,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.base.BreedableWaterAnimal;
 
 import javax.annotation.Nullable;
@@ -33,10 +34,10 @@ public class FishRoeBlock extends Block implements LiquidBlockContainer {
 
     private static final VoxelShape ONE_EGG_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
-    private Supplier<? extends EntityType> fish;
+    private final RegistryObject<? extends EntityType> fish;
 
 
-    public FishRoeBlock(BlockBehaviour.Properties pProperties, Supplier<? extends EntityType> pFish) {
+    public FishRoeBlock(BlockBehaviour.Properties pProperties, RegistryObject<? extends EntityType> pFish) {
         super(pProperties);
         this.fish = pFish;
     }
@@ -50,6 +51,7 @@ public class FishRoeBlock extends Block implements LiquidBlockContainer {
             BreedableWaterAnimal fishToSpawn = (BreedableWaterAnimal) this.fish.get().create(pLevel);
             if (fishToSpawn != null) {
                 fishToSpawn.setAge(-24000);
+                fishToSpawn.setFromBucket(true);
                 fishToSpawn.moveTo((double) pPos.getX() + 0.3D, pPos.getY(), (double) pPos.getZ() + 0.3D, 0.0F, 0.0F);
                 pLevel.addFreshEntity(fishToSpawn);
             }
@@ -61,7 +63,7 @@ public class FishRoeBlock extends Block implements LiquidBlockContainer {
         if ((double) f < 0.69D && (double) f > 0.65D) {
             return true;
         } else {
-            return pLevel.random.nextInt(1000) == 0;
+            return pLevel.random.nextInt(500) == 0;
         }
     }
 

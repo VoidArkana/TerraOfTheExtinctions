@@ -52,6 +52,10 @@ public class TotEItemModelProvider extends ItemModelProvider {
 
         simpleItem(TotEItems.OLIVE_BOAT);
         simpleItem(TotEItems.OLIVE_CHEST_BOAT);
+
+
+        simpleItem(TotEItems.FISH_MEAT);
+        simpleItem(TotEItems.COOKED_FISH_MEAT);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){

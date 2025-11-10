@@ -24,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.ai.AnimatedAttackGoal;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.ai.ConsumeBlockToHealGoal;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.ai.EggLayingFishBreedGoal;
@@ -63,10 +64,10 @@ public class Perch extends EggLayingFish implements IAnimatedAttacker {
 
     @Override
     protected void registerGoals() {
-        super.registerGoals();
+//        super.registerGoals();
 //        this.goalSelector.addGoal(0, new PanicGoal(this, 1.5D));
         this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Player.class, 8.0F, 1.6D, 1.4D));
-        this.goalSelector.addGoal(1, new ConsumeBlockToHealGoal(this, TotETags.Blocks.PERCH_FOOD));
+        this.goalSelector.addGoal(1, new ConsumeBlockToHealGoal(this, TotETags.Blocks.PERCH_FOOD, 4, 1.1D));
         this.goalSelector.addGoal(1, new LayRoeGoal(this, 1.0D,
                 TotETags.Blocks.PERCH_ROE_NESTS, TotEBlocks.PERCH_ROE));
 
@@ -75,8 +76,8 @@ public class Perch extends EggLayingFish implements IAnimatedAttacker {
         this.goalSelector.addGoal(3, new AnimatedAttackGoal(this,  1.25F, true, 10, 10));
         this.goalSelector.addGoal(4, new TemptGoal(this, 2D, FOOD_ITEMS, false));
 
-        this.randomSwimmingGoal = new RandomSwimmingGoal(this, 1.0D, 10);
-        this.goalSelector.addGoal(5, randomSwimmingGoal);
+        this.randomSwimmingGoal = new RandomSwimmingGoal(this, 1.0D, 30);
+        this.goalSelector.addGoal(4, randomSwimmingGoal);
 
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, true, false, (entity) -> {
             return entity instanceof Bleak;
@@ -191,7 +192,6 @@ public class Perch extends EggLayingFish implements IAnimatedAttacker {
             }
         }
 
-        pSpawnData = super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
 
@@ -217,7 +217,10 @@ public class Perch extends EggLayingFish implements IAnimatedAttacker {
 
     @Override
     public float getWalkTargetValue(BlockPos pPos, LevelReader pLevel) {
-        return this.getRandom().nextBoolean() ? this.getSurfacePathfindingFavor(pPos, pLevel) : this.isAquaticPlantBlock(pLevel.getBlockState(pPos)) ? 10f : 0;
+        if (this.hasEgg() || this.getHealth()<this.getMaxHealth())
+            return super.getWalkTargetValue(pPos, pLevel);
+
+        return this.getRandom().nextBoolean() ? this.getSurfacePathfindingFavor(pPos, pLevel) : this.isAquaticPlantBlock(pLevel.getBlockState(pPos)) ? 10f : super.getWalkTargetValue(pPos, pLevel);
     }
 
     float getSurfacePathfindingFavor(BlockPos pos, LevelReader world) {

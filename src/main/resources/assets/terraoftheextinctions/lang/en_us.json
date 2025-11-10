@@ -42,5 +42,8 @@
   "item.terraoftheextinctions.perch_spawn_egg": "Perch Spawn Egg",
   "item.terraoftheextinctions.perch_scales": "Perch Scales",
   "item.terraoftheextinctions.perch_bucket": "Bucket of Perch",
-  "block.terraoftheextinctions.perch_roe": "Perch Roe"
+  "block.terraoftheextinctions.perch_roe": "Perch Roe",
+
+  "item.terraoftheextinctions.fish_meat": "Raw Fish Meat",
+  "item.terraoftheextinctions.cooked_fish_meat": "Cooked Fish Meat"
 }

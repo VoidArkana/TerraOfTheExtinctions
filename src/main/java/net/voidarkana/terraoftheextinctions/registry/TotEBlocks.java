@@ -87,7 +87,7 @@ public class TotEBlocks {
 
     //Fish Roe
     public static final RegistryObject<Block> PERCH_ROE = registerBlock("perch_roe",
-            () -> new FishRoeBlock(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak(), TotEEntities.PERCH));
+            () -> new FishRoeBlock(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak().randomTicks(), TotEEntities.PERCH));
 
     private static <T extends Block> Supplier<T> create(String key, Supplier<T> block) {
         return BLOCKS.register(key, block);

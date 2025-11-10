@@ -33,6 +33,8 @@ public class TotEItems {
 
     public static final RegistryObject<Item> FISH_MEAT = ITEMS.register("fish_meat",
             () -> new Item(new Item.Properties().food(TotEFoods.RAW_FISH)));
+    public static final RegistryObject<Item> COOKED_FISH_MEAT = ITEMS.register("cooked_fish_meat",
+            () -> new Item(new Item.Properties().food(TotEFoods.COOKED_FISH)));
 
     public static final RegistryObject<Item> BLEAK_SPAWN_EGG = ITEMS.register("bleak_spawn_egg",
             () -> new ForgeSpawnEggItem(TotEEntities.BLEAK, 0x3f4c4a, 0x74756e, new Item.Properties()));

@@ -8,6 +8,7 @@ import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.TurtleEggBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -40,10 +41,10 @@ public class LayRoeGoal extends MoveToBlockGoal {
     public void tick() {
         super.tick();
         BlockPos blockpos = this.turtle.blockPosition();
-        if (!this.turtle.isInWater() && this.isReachedTarget()) {
+        if (this.turtle.isInWater() && this.isReachedTarget()) {
             if (this.turtle.layEggCounter < 1) {
                 this.turtle.setLayingEgg(true);
-            } else if (this.turtle.layEggCounter > this.adjustedTickDelay(200)) {
+            } else if (this.turtle.layEggCounter > 20) {
                 Level level = this.turtle.level();
                 level.playSound(null, blockpos, SoundEvents.TURTLE_LAY_EGG, SoundSource.BLOCKS, 0.3F, 0.9F + level.random.nextFloat() * 0.2F);
                 BlockPos blockpos1 = this.blockPos.above();
@@ -62,6 +63,6 @@ public class LayRoeGoal extends MoveToBlockGoal {
     }
 
     protected boolean isValidTarget(LevelReader pLevel, BlockPos pPos) {
-        return (pLevel.isEmptyBlock(pPos.above()) || pLevel.isWaterAt(pPos.above())) && pLevel.getBlockState(pPos).is(block);
+        return (pLevel.getBlockState(pPos.above()).is(Blocks.WATER)) && pLevel.getBlockState(pPos).is(block);
     }
 }

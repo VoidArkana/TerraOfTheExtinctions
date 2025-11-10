@@ -98,7 +98,7 @@ public class PerchModel<T extends Perch> extends HierarchicalModel<T> {
 			if (pEntity.isSprinting())
 				this.animateWalk(PerchAnims.SWIM_FAST, pLimbSwing, pLimbSwingAmount, 1.25f, 3f);
 			else
-				this.animateWalk(PerchAnims.SWIM, pLimbSwing, pLimbSwingAmount, 2f, 3f);
+				this.animateWalk(PerchAnims.SWIM, pLimbSwing, pLimbSwingAmount*2, 2f, 3f);
 			this.swim_rot.xRot = pHeadPitch * ((float)Math.PI / 180F);
 			this.swim_rot.zRot = pNetHeadYaw * (((float)Math.PI / 180F)/2);
 
@@ -112,7 +112,17 @@ public class PerchModel<T extends Perch> extends HierarchicalModel<T> {
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+		poseStack.pushPose();
+
+		if (this.young){
+			poseStack.scale(0.5f, 0.5f, 0.5f);
+			poseStack.translate(0, 1.5, 0);
+		}else {
+			poseStack.translate(0, -0.05, 0);
+		}
+
 		root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		poseStack.popPose();
 	}
 
 	@Override

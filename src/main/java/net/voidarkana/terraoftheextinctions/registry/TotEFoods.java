@@ -11,4 +11,8 @@ public class TotEFoods {
     public static final FoodProperties RAW_FISH =  (new FoodProperties.Builder())
             .nutrition(2)
             .saturationMod(0.1F).build();
+
+    public static final FoodProperties COOKED_FISH =  (new FoodProperties.Builder())
+            .nutrition(6)
+            .saturationMod(0.8F).build();
 }

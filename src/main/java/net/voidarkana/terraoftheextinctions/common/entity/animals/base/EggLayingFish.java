@@ -10,8 +10,8 @@ import net.voidarkana.terraoftheextinctions.common.entity.animals.Perch;
 
 public abstract class EggLayingFish extends BreedableWaterAnimal{
 
-    private static final EntityDataAccessor<Boolean> HAS_EGG = SynchedEntityData.defineId(Perch.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> LAYING_EGG = SynchedEntityData.defineId(Perch.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> HAS_EGG = SynchedEntityData.defineId(EggLayingFish.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> LAYING_EGG = SynchedEntityData.defineId(EggLayingFish.class, EntityDataSerializers.BOOLEAN);
     public int layEggCounter;
 
     protected EggLayingFish(EntityType<? extends BreedableWaterAnimal> pEntityType, Level pLevel) {

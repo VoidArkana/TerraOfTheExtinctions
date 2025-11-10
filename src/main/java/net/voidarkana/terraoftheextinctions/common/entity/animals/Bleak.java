@@ -10,6 +10,7 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -179,5 +180,15 @@ public class Bleak extends AbstractSchoolingFish {
     @Override
     public ItemStack getBucketItemStack() {
         return null;
+    }
+
+    @Override
+    protected @org.jetbrains.annotations.Nullable SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return SoundEvents.COD_HURT;
+    }
+
+    @Override
+    protected @org.jetbrains.annotations.Nullable SoundEvent getDeathSound() {
+        return SoundEvents.COD_DEATH;
     }
 }

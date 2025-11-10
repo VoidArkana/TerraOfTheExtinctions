@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "terraoftheextinctions:fish_meat"
+  },
+  "result": "terraoftheextinctions:cooked_fish_meat",
+  "experience": 0.35,
+  "cookingtime": 100
+}

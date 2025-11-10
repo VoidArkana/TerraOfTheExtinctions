@@ -33,7 +33,7 @@ public class TotEEntities {
     public static final RegistryObject<EntityType<Perch>> PERCH =
             ENTITY_TYPES.register("perch",
                     () -> EntityType.Builder.of(Perch::new, MobCategory.WATER_AMBIENT)
-                            .sized(0.7f, 0.6f)
+                            .sized(0.55f, 0.4f)
                             .build(new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "perch").toString()));
 
     public static void register(IEventBus eventBus) {

@@ -22,6 +22,7 @@ public class TotECreativeTab {
                         output.accept(TotEItems.PERCH_SPAWN_EGG.get());
 
                         output.accept(TotEItems.FISH_MEAT.get());
+                        output.accept(TotEItems.COOKED_FISH_MEAT.get());
 
                         output.accept(TotEItems.PERCH_BUCKET.get());
                         output.accept(TotEBlocks.PERCH_ROE.get());
