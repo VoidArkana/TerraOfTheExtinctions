@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
 import net.voidarkana.terraoftheextinctions.client.TotEModelLayers;
 import net.voidarkana.terraoftheextinctions.client.models.BleakModel;
+import net.voidarkana.terraoftheextinctions.client.models.CandiruModel;
 import net.voidarkana.terraoftheextinctions.client.models.PerchModel;
 import net.voidarkana.terraoftheextinctions.registry.TotEBlockEntities;
 
@@ -24,6 +25,7 @@ public class TotEEventBusClientEvents {
 
         event.registerLayerDefinition(TotEModelLayers.BLEAK_LAYER, BleakModel::createBodyLayer);
         event.registerLayerDefinition(TotEModelLayers.PERCH_LAYER, PerchModel::createBodyLayer);
+        event.registerLayerDefinition(TotEModelLayers.CANDIRU_LAYER, CandiruModel::createBodyLayer);
     }
 
     @SubscribeEvent

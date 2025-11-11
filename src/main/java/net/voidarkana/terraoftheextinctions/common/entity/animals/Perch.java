@@ -64,8 +64,6 @@ public class Perch extends EggLayingFish implements IAnimatedAttacker {
 
     @Override
     protected void registerGoals() {
-//        super.registerGoals();
-//        this.goalSelector.addGoal(0, new PanicGoal(this, 1.5D));
         this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Player.class, 8.0F, 1.6D, 1.4D));
         this.goalSelector.addGoal(1, new ConsumeBlockToHealGoal(this, TotETags.Blocks.PERCH_FOOD, 4, 1.1D));
         this.goalSelector.addGoal(1, new LayRoeGoal(this, 1.0D,

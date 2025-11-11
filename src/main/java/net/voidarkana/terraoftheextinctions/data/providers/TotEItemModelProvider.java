@@ -29,7 +29,7 @@ public class TotEItemModelProvider extends ItemModelProvider {
         simpleItem(TotEItems.PERCH_BUCKET);
         withExistingParent(TotEItems.PERCH_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
-//        simpleItem(TotEItems.FISH_MEAT);
+        withExistingParent(TotEItems.CANDIRU_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
         // OLIVE
         simpleItem(TotEItems.OLIVES);

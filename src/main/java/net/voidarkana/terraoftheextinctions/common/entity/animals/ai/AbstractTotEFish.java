@@ -199,7 +199,7 @@ public abstract class AbstractTotEFish extends WaterAnimal implements Bucketable
         return true;
     }
 
-    static class FishSwimGoal extends RandomSwimmingGoal {
+    public static class FishSwimGoal extends RandomSwimmingGoal {
         private final AbstractTotEFish fish;
 
         public FishSwimGoal(AbstractTotEFish pFish) {
@@ -207,10 +207,6 @@ public abstract class AbstractTotEFish extends WaterAnimal implements Bucketable
             this.fish = pFish;
         }
 
-        /**
-         * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
-         * method as well.
-         */
         public boolean canUse() {
             return this.fish.canRandomSwim() && super.canUse();
         }

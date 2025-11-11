@@ -99,8 +99,8 @@ public class PerchModel<T extends Perch> extends HierarchicalModel<T> {
 				this.animateWalk(PerchAnims.SWIM_FAST, pLimbSwing, pLimbSwingAmount, 1.25f, 3f);
 			else
 				this.animateWalk(PerchAnims.SWIM, pLimbSwing, pLimbSwingAmount*2, 2f, 3f);
-			this.swim_rot.xRot = pHeadPitch * ((float)Math.PI / 180F);
-			this.swim_rot.zRot = pNetHeadYaw * (((float)Math.PI / 180F)/2);
+			this.swim_rot.xRot = pHeadPitch * ((float)Math.PI / 180F)/2;
+			this.swim_rot.zRot = pNetHeadYaw * (((float)Math.PI / 180F)/4);
 
 			this.animate(pEntity.attackAnimationState, PerchAnims.ATTACK, pAgeInTicks, 1f);
 		}else {

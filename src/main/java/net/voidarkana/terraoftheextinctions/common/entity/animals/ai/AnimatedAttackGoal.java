@@ -7,7 +7,7 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.base.IAnimatedAttacker;
 
 public class AnimatedAttackGoal extends MeleeAttackGoal {
-    private final LivingEntity entity;
+    public final LivingEntity entity;
     private int attackDelay;
     private int ticksUntilNextAttack;
     private int attackDelayStored;
@@ -78,7 +78,7 @@ public class AnimatedAttackGoal extends MeleeAttackGoal {
     }
 
 
-    protected void performAttack(LivingEntity pEnemy) {
+    public void performAttack(LivingEntity pEnemy) {
         this.resetAttackCooldown();
         this.mob.swing(InteractionHand.MAIN_HAND);
         this.mob.doHurtTarget(pEnemy);

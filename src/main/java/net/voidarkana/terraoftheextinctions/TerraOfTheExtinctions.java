@@ -14,6 +14,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.voidarkana.terraoftheextinctions.client.ClientEvents;
 import net.voidarkana.terraoftheextinctions.client.renderers.BleakRenderer;
+import net.voidarkana.terraoftheextinctions.client.renderers.CandiruRenderer;
 import net.voidarkana.terraoftheextinctions.client.renderers.PerchRenderer;
 import net.voidarkana.terraoftheextinctions.common.entity.TotEEntityPlacements;
 import net.voidarkana.terraoftheextinctions.common.event.TotEEvents;
@@ -68,6 +69,7 @@ public class TerraOfTheExtinctions
 
             EntityRenderers.register(TotEEntities.BLEAK.get(), BleakRenderer::new);
             EntityRenderers.register(TotEEntities.PERCH.get(), PerchRenderer::new);
+            EntityRenderers.register(TotEEntities.CANDIRU.get(), CandiruRenderer::new);
         });
     }
 
