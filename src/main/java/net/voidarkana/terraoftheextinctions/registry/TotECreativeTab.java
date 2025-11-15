@@ -19,6 +19,7 @@ public class TotECreativeTab {
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(TotEItems.BLEAK_SPAWN_EGG.get());
+                        output.accept(TotEItems.CANDIRU_SPAWN_EGG.get());
                         output.accept(TotEItems.PERCH_SPAWN_EGG.get());
 
                         output.accept(TotEItems.FISH_MEAT.get());

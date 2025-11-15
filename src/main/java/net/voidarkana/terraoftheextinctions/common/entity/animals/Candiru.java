@@ -7,12 +7,15 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.WaterAnimal;
@@ -23,10 +26,18 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.Vec3;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.ai.AbstractTotEFish;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.ai.AnimatedAttackGoal;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.base.IAnimatedAttacker;
+import net.voidarkana.terraoftheextinctions.network.TotEMessages;
+import net.voidarkana.terraoftheextinctions.network.messages.MessageCandiruMountPlayer;
 import net.voidarkana.terraoftheextinctions.registry.TotEEffects;
+import net.voidarkana.terraoftheextinctions.registry.TotEEntities;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.EnumSet;
 
 public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
 
@@ -36,10 +47,13 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
     public int attackAnimationTimeout;
     public int goingIntoBodyAnimationTimeout;
     public int prevGoingIntoBodyTicks;
+    private int digTime = 0;
 
     private static final EntityDataAccessor<Boolean> IS_ATTACKING = SynchedEntityData.defineId(Candiru.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> GOING_INTO_BODY_TICKS = SynchedEntityData.defineId(Candiru.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> IS_GOING_INTO_BODY = SynchedEntityData.defineId(Candiru.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_ATTACHED = SynchedEntityData.defineId(Candiru.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> WANTS_TO_GO_IN = SynchedEntityData.defineId(Candiru.class, EntityDataSerializers.BOOLEAN);
 
     public Candiru(EntityType<? extends WaterAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -51,22 +65,16 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
         this.goalSelector.addGoal(2, new CandiruAttackGoal(this, 1.25, true, 10, 10));
 
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true,
+                (living)->{
+                    return living.getMobType() != MobType.UNDEAD && living.getType() != (TotEEntities.CANDIRU.get());
+                }));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 2.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.8F)
-                .add(Attributes.ATTACK_DAMAGE, 3);
-    }
-
-    public boolean doHurtTarget(Entity pEntity) {
-        boolean flag = pEntity.hurt(this.damageSources().mobAttack(this),
-                (float)((int)this.getAttributeValue(Attributes.ATTACK_DAMAGE)));
-        if (flag) {
-            this.doEnchantDamageEffects(this, pEntity);
-        }
-
-        return flag;
+                .add(Attributes.ATTACK_DAMAGE, 2);
     }
 
     protected void defineSynchedData() {
@@ -74,16 +82,20 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
         this.entityData.define(IS_ATTACKING, false);
         this.entityData.define(IS_GOING_INTO_BODY, false);
         this.entityData.define(GOING_INTO_BODY_TICKS, 0);
+        this.entityData.define(IS_ATTACHED, false);
+        this.entityData.define(WANTS_TO_GO_IN, false);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putBoolean("IsAttacking", this.isAttacking());
+        pCompound.putBoolean("WantsToGoIn", this.wantsToGoIn());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         this.setAttacking(pCompound.getBoolean("IsAttacking"));
+        this.setWantsToGoIn(pCompound.getBoolean("WantsToGoIn"));
     }
 
     @Override
@@ -94,6 +106,14 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
     @Override
     public void setAttacking(boolean attacking) {
         this.entityData.set(IS_ATTACKING, attacking);
+    }
+
+    public boolean isAttached() {
+        return this.entityData.get(IS_ATTACHED);
+    }
+
+    public void setAttached(boolean attached) {
+        this.entityData.set(IS_ATTACHED, attached);
     }
 
     public boolean isGoingIntoBody() {
@@ -110,6 +130,14 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
 
     public void setGoingIntoBodyTicks(int goingIntoBodyTicks) {
         this.entityData.set(GOING_INTO_BODY_TICKS, goingIntoBodyTicks);
+    }
+
+    public boolean wantsToGoIn() {
+        return this.entityData.get(WANTS_TO_GO_IN);
+    }
+
+    public void setWantsToGoIn(boolean wantsToGoIn) {
+        this.entityData.set(WANTS_TO_GO_IN, wantsToGoIn);
     }
 
     @Override
@@ -130,12 +158,56 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
 
         super.tick();
 
+        if (this.getTarget()!=null && !this.wantsToGoIn()){
+            this.setWantsToGoIn(this.getRandom().nextInt(50)==0 || this.getTarget().getHealth() < this.getTarget().getMaxHealth()/2);
+        }
+
+        if (this.wantsToGoIn() && this.getTarget()==null && !this.isPassenger()){
+            this.setWantsToGoIn(false);
+        }
+
         if (this.isGoingIntoBody()){
-            if (this.getGoingIntoBodyTicks() <= 0)
+
+            if (this.getGoingIntoBodyTicks() <= 1){
+
+                if (this.getVehicle() instanceof LivingEntity living){
+                    if (living.hasEffect(TotEEffects.CANDIRU_INFESTED.get())){
+
+                        int duration = living.getEffect(TotEEffects.CANDIRU_INFESTED.get()).getDuration();
+                        int amplifier = living.getEffect(TotEEffects.CANDIRU_INFESTED.get()).getAmplifier()+1;
+                        living.removeEffect(TotEEffects.CANDIRU_INFESTED.get());
+
+                        living.addEffect(new MobEffectInstance(TotEEffects.CANDIRU_INFESTED.get(),
+                                duration, amplifier, false, true));
+                    }else{
+                        living.addEffect(new MobEffectInstance(TotEEffects.CANDIRU_INFESTED.get(), 10*20*60, 0, false, true));
+                    }
+                }
+
                 this.discard();
-            else {
+            } else {
                 this.prevGoingIntoBodyTicks = this.getGoingIntoBodyTicks();
-                this.setGoingIntoBodyTicks(prevGoingIntoBodyTicks--);
+                this.setGoingIntoBodyTicks(this.prevGoingIntoBodyTicks-1);
+            }
+        }
+
+        if (this.getGoingIntoBodyTicks()>0 && !this.isPassenger()){
+            this.setGoingIntoBodyTicks(0);
+            this.setGoingIntoBody(false);
+        }
+
+        if (this.isAttached() && !this.isPassenger()){
+            this.setAttached(false);
+        }
+
+        if (!this.level().isClientSide){
+            if (this.isAttached()) {
+                if (digTime < 0)
+                    digTime = 0;
+
+                digTime++;
+            } else {
+                digTime = 0;
             }
         }
 
@@ -151,17 +223,21 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
             --this.attackAnimationTimeout;
         }
 
-        if (this.isGoingIntoBody() && goingIntoBodyAnimationTimeout <= 0){
+        if (this.getGoingIntoBodyTicks()>0 && goingIntoBodyAnimationTimeout <= 0){
             goingIntoBodyAnimationTimeout = 20;
             getIntoBodyAnimationState.start(this.tickCount);
         } else {
             --this.goingIntoBodyAnimationTimeout;
         }
+
+        if (goingIntoBodyAnimationTimeout == 0 && getIntoBodyAnimationState.isStarted()){
+            this.getIntoBodyAnimationState.stop();
+        }
     }
 
     public void goIntoBody(){
         this.setGoingIntoBody(true);
-        this.setGoingIntoBodyTicks(10);
+        this.setGoingIntoBodyTicks(11);
     }
 
     public void customServerAiStep() {
@@ -188,25 +264,6 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
     @Override
     public boolean canBeBucketed() {
         return false;
-    }
-
-    static class CandiruAttackGoal extends AnimatedAttackGoal{
-        final Candiru candiru;
-
-        public CandiruAttackGoal(Candiru pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen, int pAttackDelay, int pTicksUntilNextAttack) {
-            super(pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen, pAttackDelay, pTicksUntilNextAttack);
-            candiru = pMob;
-        }
-
-        @Override
-        public void performAttack(LivingEntity pEnemy) {
-            super.performAttack(pEnemy);
-
-            if (candiru.getRandom().nextInt(10)==0){
-                candiru.goIntoBody();
-                pEnemy.addEffect(new MobEffectInstance(TotEEffects.CANDIRU_INFESTED.get(), 10*20*60, 0, false, false));
-            }
-        }
     }
 
     @Override
@@ -260,5 +317,99 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
                 return j <= dimensiontype.monsterSpawnLightTest().sample(pRandom);
             }
         }
+    }
+
+    @Override
+    protected @Nullable SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return SoundEvents.COD_HURT;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getDeathSound() {
+        return SoundEvents.COD_DEATH;
+    }
+
+    public class CandiruAttackGoal extends AnimatedAttackGoal{
+        private final Candiru candiru;
+
+        public CandiruAttackGoal(Candiru pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen, int pAttackDelay, int pTicksUntilNextAttack) {
+            super(pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen, pAttackDelay, pTicksUntilNextAttack);
+            this.candiru = pMob;
+        }
+
+        @Override
+        public void performAttack(LivingEntity pEnemy) {
+            super.performAttack(pEnemy);
+
+            if (candiru.wantsToGoIn() && !isBeingBiten(pEnemy)){
+                candiru.startRiding(pEnemy, true);
+                candiru.setAttached(true);
+                if (!candiru.level().isClientSide) {
+                    TotEMessages.sendMSGToAll(new MessageCandiruMountPlayer(candiru.getId(), candiru.getTarget().getId()));
+                }
+            }
+        }
+
+        public boolean isBeingBiten(Entity entity) {
+            for (Entity e : entity.getPassengers()) {
+                if (e instanceof Candiru) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+    public static final float STARTING_ANGLE = 0.0174532925F;
+
+    public void rideTick() {
+        final Entity entity = this.getVehicle();
+        if (this.canUpdate())
+            this.tick();
+
+        if (this.isPassenger() && !entity.isAlive()) {
+            this.stopRiding();
+        } else {
+            this.setDeltaMovement(Vec3.ZERO);
+            if (this.isPassenger() && this.isAttached()) {
+                if (entity instanceof final LivingEntity livingEntity) {
+                    this.yBodyRot = livingEntity.yBodyRot + (float) Math.toRadians(180);
+                    this.setYRot(livingEntity.getYRot());
+                    this.yHeadRot = livingEntity.yHeadRot + (float) Math.toRadians(180);
+                    this.yRotO = livingEntity.yHeadRot + (float) Math.toRadians(180);
+                    final float radius = 0.7F;
+                    final float angle = (STARTING_ANGLE * livingEntity.yBodyRot);
+                    final double extraX = radius * Mth.sin(Mth.PI + angle);
+                    final double extraZ = radius * Mth.cos(angle);
+
+                    this.setPos(entity.getX() + extraX,
+                            Math.max(entity.getY() + entity.getEyeHeight() * 0.25F, entity.getY()),
+                            entity.getZ() + extraZ);
+
+                    if (!entity.isAlive() || entity instanceof Player && ((Player) entity).isCreative()) {
+                        this.removeVehicle();
+                    }
+                    if (!this.level().isClientSide) {
+
+
+                        if (digTime % 20 == 0 && this.isAlive() && digTime <= 100 && livingEntity.getHealth() > livingEntity.getMaxHealth()/2) {
+                            if (entity.hurt(this.damageSources().mobAttack(this), 1.0F)) {
+                                this.gameEvent(GameEvent.EAT);
+                                this.playSound(SoundEvents.DOLPHIN_EAT, this.getSoundVolume(), this.getVoicePitch());
+                            }
+                        }
+
+                        if (digTime == 100 || (digTime % 20 == 0 && livingEntity.getHealth() < livingEntity.getMaxHealth()/2)) {
+                            this.goIntoBody();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public boolean dismountsUnderwater() {
+        return super.dismountsUnderwater();
     }
 }

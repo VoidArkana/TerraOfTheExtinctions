@@ -1,24 +1,21 @@
 package net.voidarkana.terraoftheextinctions;
 
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.voidarkana.terraoftheextinctions.client.ClientEvents;
-import net.voidarkana.terraoftheextinctions.client.renderers.BleakRenderer;
-import net.voidarkana.terraoftheextinctions.client.renderers.CandiruRenderer;
-import net.voidarkana.terraoftheextinctions.client.renderers.PerchRenderer;
 import net.voidarkana.terraoftheextinctions.common.entity.TotEEntityPlacements;
-import net.voidarkana.terraoftheextinctions.common.event.TotEEvents;
+import net.voidarkana.terraoftheextinctions.event.TotEModEvents;
+import net.voidarkana.terraoftheextinctions.network.TotEMessages;
 import net.voidarkana.terraoftheextinctions.registry.*;
+import net.voidarkana.terraoftheextinctions.util.proxy.ClientProxy;
+import net.voidarkana.terraoftheextinctions.util.proxy.CommonProxy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +25,7 @@ public class TerraOfTheExtinctions
 {
     public static final String MOD_ID = "terraoftheextinctions";
     public static final List<Runnable> CALLBACKS = new ArrayList<>();
+    public static CommonProxy PROXY = (CommonProxy) DistExecutor.runForDist(() -> ClientProxy::new, () -> CommonProxy::new);
 
     public TerraOfTheExtinctions()
     {
@@ -38,17 +36,19 @@ public class TerraOfTheExtinctions
         TotEEntities.register(bus);
         TotESounds.register(bus);
         TotEBlockEntities.register(bus);
+        TotEEffects.register(bus);
         TotEConfiguredFeatures.register(bus);
         TotECreativeTab.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.register(new TotEEvents());
+        MinecraftForge.EVENT_BUS.register(new TotEModEvents());
 
         bus.addListener(this::commonSetup);
         bus.addListener(this::clientSetup);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        TotEMessages.register();
         event.enqueueWork(()->{
             TotEEntityPlacements.entityPlacement();
 
@@ -60,26 +60,6 @@ public class TerraOfTheExtinctions
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        MinecraftForge.EVENT_BUS.register(new ClientEvents());
-
-        event.enqueueWork(()->{
-
-            TerraOfTheExtinctions.CALLBACKS.forEach(Runnable::run);
-            TerraOfTheExtinctions.CALLBACKS.clear();
-
-            EntityRenderers.register(TotEEntities.BLEAK.get(), BleakRenderer::new);
-            EntityRenderers.register(TotEEntities.PERCH.get(), PerchRenderer::new);
-            EntityRenderers.register(TotEEntities.CANDIRU.get(), CandiruRenderer::new);
-        });
-    }
-
-
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event){
-
-        }
+        event.enqueueWork(() -> PROXY.clientInit());
     }
 }

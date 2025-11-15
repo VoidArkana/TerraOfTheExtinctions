@@ -56,13 +56,13 @@ public class TotEBlocks {
 
     //Olive signs
     public static final RegistryObject<Block> OLIVE_SIGN = BLOCKS.register("olive_sign",
-            () -> new TotEStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_SIGN), TotEBlockSetTypes.OLIVE));
+            () -> new TotEStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_SIGN), TotEWoodTypes.OLIVE));
     public static final RegistryObject<Block> OLIVE_WALL_SIGN = BLOCKS.register("olive_wall_sign",
-            () -> new TotEWallSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_SIGN), TotEBlockSetTypes.OLIVE));
+            () -> new TotEWallSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_SIGN), TotEWoodTypes.OLIVE));
     public static final RegistryObject<Block> OLIVE_HANGING_SIGN = BLOCKS.register("olive_hanging_sign",
-            () -> new TotEHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_HANGING_SIGN), TotEBlockSetTypes.OLIVE));
+            () -> new TotEHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_HANGING_SIGN), TotEWoodTypes.OLIVE));
     public static final RegistryObject<Block> OLIVE_WALL_HANGING_SIGN = BLOCKS.register("olive_wall_hanging_sign",
-            () -> new TotEWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_HANGING_SIGN), TotEBlockSetTypes.OLIVE));
+            () -> new TotEWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_HANGING_SIGN), TotEWoodTypes.OLIVE));
 
     //Olive logs and wood
     public static final RegistryObject<Block> OLIVE_LOG = registerBlock("olive_log",

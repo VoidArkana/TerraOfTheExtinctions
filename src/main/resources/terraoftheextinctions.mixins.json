@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "terraoftheexctinctions.refmap.json",
   "mixins": [
+    "common.EntityMixin"
   ],
   "client": [
   ],

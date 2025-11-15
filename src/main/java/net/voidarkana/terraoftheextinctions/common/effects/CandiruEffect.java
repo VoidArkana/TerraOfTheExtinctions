@@ -4,15 +4,22 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.Candiru;
+import net.voidarkana.terraoftheextinctions.registry.TotEDamageTypes;
 import net.voidarkana.terraoftheextinctions.registry.TotEEffects;
 import net.voidarkana.terraoftheextinctions.registry.TotEEntities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CandiruEffect extends MobEffect {
 
-    private LivingEntity entity;
+    private boolean spawnCandiru = false;
 
     public CandiruEffect(MobEffectCategory pCategory, int pColor) {
         super(pCategory, pColor);
@@ -22,32 +29,42 @@ public class CandiruEffect extends MobEffect {
         Level level = pLivingEntity.level();
         Candiru fish = TotEEntities.CANDIRU.get().create(level);
 
-        pLivingEntity.hurt(pLivingEntity.damageSources().mobAttack(fish), 1.0F);
+        pLivingEntity.hurt(level.damageSources().source(TotEDamageTypes.CANDIRU_INFESTATION, pLivingEntity), 1.0F);
+        pLivingEntity.gameEvent(GameEvent.ENTITY_DAMAGE);
 
-        if (this.entity == null)
-            this.entity = pLivingEntity;
+        if (this.spawnCandiru){
+            pLivingEntity.hurt(level.damageSources().source(TotEDamageTypes.CANDIRU_INFESTATION, pLivingEntity), 7.0F);
+
+            if (pLivingEntity.isAlive())
+                this.spawnCandiru(pLivingEntity);
+        }
     }
 
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
-        if (pDuration == 1)
-            spawnCandiru();
-        return pDuration % 100 == 0;
+        if (pDuration>5)
+            this.spawnCandiru = false;
+        else if (!this.spawnCandiru)
+            this.spawnCandiru = true;
+        return pDuration % 100 == 0 || pDuration == 5;
     }
 
-    public void spawnCandiru(){
-        Level level = this.entity.level();
+    public void spawnCandiru(LivingEntity entity){
+        Level level = entity.level();
         if (level instanceof ServerLevel sLevel){
-
-            int e = 2 * (this.entity.getEffect(TotEEffects.CANDIRU_INFESTED.get()).getAmplifier() + 1);
+            int e = 2 * (entity.getEffect(TotEEffects.CANDIRU_INFESTED.get()).getAmplifier() + 1);
 
             for(int i = 0; i != e; ++i) {
                 Candiru fish = TotEEntities.CANDIRU.get().create(sLevel);
-                fish.moveTo(Vec3.atCenterOf(this.entity.getOnPos()));
+                fish.moveTo(Vec3.atCenterOf(entity.getOnPos()).add(0, 1, 0));
                 sLevel.addFreshEntity(fish);
             }
         }
+    }
 
-        Candiru fish = TotEEntities.CANDIRU.get().create(level);
-        this.entity.hurt(this.entity.damageSources().mobAttack(fish), 1.0F);
+    @Override
+    public List<ItemStack> getCurativeItems() {
+        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+        ret.add(new ItemStack(Items.DEBUG_STICK));
+        return ret;
     }
 }

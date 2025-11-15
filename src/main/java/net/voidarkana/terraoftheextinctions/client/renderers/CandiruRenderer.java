@@ -18,6 +18,6 @@ public class CandiruRenderer extends MobRenderer<Candiru, CandiruModel<Candiru>>
 
     @Override
     public ResourceLocation getTextureLocation(Candiru pEntity) {
-        return new ResourceLocation(TerraOfTheExtinctions.MOD_ID,"textures/entity/perch.png");
+        return new ResourceLocation(TerraOfTheExtinctions.MOD_ID,"textures/entity/candiru.png");
     }
 }

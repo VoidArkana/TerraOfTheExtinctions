@@ -89,7 +89,7 @@ public class CandiruModel<T extends Candiru> extends HierarchicalModel<T> {
 
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 
-		if (pEntity.isInWaterOrBubble()){
+		if (pEntity.isInWaterOrBubble() && !pEntity.isAttached()){
 			if (pEntity.isSprinting())
 				this.animateWalk(CandiruAnims.FAST_SWIM, pLimbSwing, pLimbSwingAmount, 1.25f, 3f);
 			else
@@ -98,10 +98,15 @@ public class CandiruModel<T extends Candiru> extends HierarchicalModel<T> {
 			this.swim_rot.zRot = pNetHeadYaw * (((float)Math.PI / 180F)/4);
 
 			this.animate(pEntity.attackAnimationState, CandiruAnims.ATTACK, pAgeInTicks, 1f);
-			this.animate(pEntity.getIntoBodyAnimationState, CandiruAnims.GO_INTO_BODY, pAgeInTicks, 1f);
 		}else {
 			this.swim_rot.resetPose();
-			this.animate(pEntity.idleAnimationState, CandiruAnims.FLOP, pAgeInTicks, 1F);
+
+			if (pEntity.isAttached()){
+				this.animate(pEntity.idleAnimationState, CandiruAnims.FAST_SWIM, pAgeInTicks, 1F);
+				this.animate(pEntity.getIntoBodyAnimationState, CandiruAnims.GO_INTO_BODY, pAgeInTicks, 1f);
+			}
+			else
+				this.animate(pEntity.idleAnimationState, CandiruAnims.FLOP, pAgeInTicks, 1F);
 		}
 	}
 
