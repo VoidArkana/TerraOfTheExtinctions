@@ -99,14 +99,16 @@ public class CandiruModel<T extends Candiru> extends HierarchicalModel<T> {
 
 			this.animate(pEntity.attackAnimationState, CandiruAnims.ATTACK, pAgeInTicks, 1f);
 		}else {
-			this.swim_rot.resetPose();
 
 			if (pEntity.isAttached()){
+				this.swim_rot.yRot = 180;
 				this.animate(pEntity.idleAnimationState, CandiruAnims.FAST_SWIM, pAgeInTicks, 1F);
 				this.animate(pEntity.getIntoBodyAnimationState, CandiruAnims.GO_INTO_BODY, pAgeInTicks, 1f);
 			}
-			else
+			else{
 				this.animate(pEntity.idleAnimationState, CandiruAnims.FLOP, pAgeInTicks, 1F);
+				this.swim_rot.resetPose();
+			}
 		}
 	}
 

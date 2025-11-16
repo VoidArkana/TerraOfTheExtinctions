@@ -1,9 +1,7 @@
 package net.voidarkana.terraoftheextinctions.mixin.common;
 
-import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.common.MinecraftForge;
 import net.voidarkana.terraoftheextinctions.registry.TotEEntities;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,7 +19,7 @@ public abstract class EntityMixin extends net.minecraftforge.common.capabilities
         super(baseClass);
     }
 
-    @Inject(method = "dismountsUnderwater()Z", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "dismountsUnderwater", at = @At("HEAD"), cancellable = true)
     public void dismountsUnderwater(CallbackInfoReturnable<Boolean> cir) {
         if (this.getControllingPassenger() != null){
             if (this.getControllingPassenger().getType() == TotEEntities.CANDIRU.get()){

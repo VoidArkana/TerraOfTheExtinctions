@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#terraoftheextinctions:candiru_biomes",
+  "spawners": {
+    "type": "terraoftheextinctions:candiru",
+    "weight": 7,
+    "minCount": 2,
+    "maxCount": 5,
+    "category": "water_creature"
+  }
+}

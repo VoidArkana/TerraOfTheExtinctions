@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "net.voidarkana.terraoftheextinctions.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "terraoftheexctinctions.refmap.json",
+  "refmap": "terraoftheextinctions.refmap.json",
   "mixins": [
     "common.EntityMixin"
   ],

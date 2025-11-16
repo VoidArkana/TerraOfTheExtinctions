@@ -15,7 +15,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.WaterAnimal;
@@ -28,6 +27,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.Tags;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.ai.AbstractTotEFish;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.ai.AnimatedAttackGoal;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.base.IAnimatedAttacker;
@@ -36,8 +36,6 @@ import net.voidarkana.terraoftheextinctions.network.messages.MessageCandiruMount
 import net.voidarkana.terraoftheextinctions.registry.TotEEffects;
 import net.voidarkana.terraoftheextinctions.registry.TotEEntities;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.EnumSet;
 
 public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
 
@@ -67,7 +65,9 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true,
                 (living)->{
-                    return living.getMobType() != MobType.UNDEAD && living.getType() != (TotEEntities.CANDIRU.get());
+                    return living.getMobType() != MobType.UNDEAD && living.getMobType() != MobType.ARTHROPOD
+                            && living.getType() != (TotEEntities.CANDIRU.get()) && living.getType() != (EntityType.WARDEN)
+                            && living.getType() != (EntityType.ENDER_DRAGON);
                 }));
     }
 
@@ -373,10 +373,10 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
             this.setDeltaMovement(Vec3.ZERO);
             if (this.isPassenger() && this.isAttached()) {
                 if (entity instanceof final LivingEntity livingEntity) {
-                    this.yBodyRot = livingEntity.yBodyRot + (float) Math.toRadians(180);
+                    this.yBodyRot = livingEntity.yBodyRot;
                     this.setYRot(livingEntity.getYRot());
-                    this.yHeadRot = livingEntity.yHeadRot + (float) Math.toRadians(180);
-                    this.yRotO = livingEntity.yHeadRot + (float) Math.toRadians(180);
+                    this.yHeadRot = livingEntity.yHeadRot;
+                    this.yRotO = livingEntity.yHeadRot;
                     final float radius = 0.7F;
                     final float angle = (STARTING_ANGLE * livingEntity.yBodyRot);
                     final double extraX = radius * Mth.sin(Mth.PI + angle);
@@ -386,7 +386,7 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
                             Math.max(entity.getY() + entity.getEyeHeight() * 0.25F, entity.getY()),
                             entity.getZ() + extraZ);
 
-                    if (!entity.isAlive() || entity instanceof Player && ((Player) entity).isCreative()) {
+                    if (!entity.isAlive() || (entity instanceof Player && ((Player) entity).isCreative())) {
                         this.removeVehicle();
                     }
                     if (!this.level().isClientSide) {
@@ -406,10 +406,5 @@ public class Candiru extends AbstractTotEFish implements IAnimatedAttacker {
                 }
             }
         }
-    }
-
-    @Override
-    public boolean dismountsUnderwater() {
-        return super.dismountsUnderwater();
     }
 }
