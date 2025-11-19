@@ -54,7 +54,7 @@ public class TotEConfiguredFeatures {
 
         register(context, GRAPE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder
                 (BlockStateProvider.simple(TotEBlocks.GRAPE_LOG.get()),
-                        new StraightTrunkPlacer(4, 4, 1),
+                        new StraightTrunkPlacer(5, 4, 1),
                         BlockStateProvider.simple(TotEBlocks.GRAPE_LEAVES.get()),
                         new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
                         new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());
