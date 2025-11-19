@@ -29,6 +29,7 @@ public class ClientProxy extends CommonProxy{
 
     public void clientInit() {
         Sheets.addWoodType(TotEWoodTypes.OLIVE);
+        Sheets.addWoodType(TotEWoodTypes.GRAPE);
 
 //        MinecraftForge.EVENT_BUS.register(new MMClientEvents());
 

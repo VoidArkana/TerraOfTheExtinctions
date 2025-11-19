@@ -18,14 +18,18 @@ public class TotEBlockEntities {
             BLOCK_ENTITIES.register( "mod_sign", () ->
                     BlockEntityType.Builder.of(TotESignBlockEntity::new,
                                     TotEBlocks.OLIVE_SIGN.get(),
-                                    TotEBlocks.OLIVE_WALL_SIGN.get())
+                                    TotEBlocks.OLIVE_WALL_SIGN.get(),
+                                    TotEBlocks.GRAPE_SIGN.get(),
+                                    TotEBlocks.GRAPE_WALL_SIGN.get())
                             .build(null));
 
     public static final RegistryObject<BlockEntityType<TotEHangingSignBlockEntity>> MOD_HANGING_SIGN =
             BLOCK_ENTITIES.register( "mod_hanging_sign", () ->
                     BlockEntityType.Builder.of(TotEHangingSignBlockEntity::new,
                                     TotEBlocks.OLIVE_HANGING_SIGN.get(),
-                                    TotEBlocks.OLIVE_WALL_HANGING_SIGN.get())
+                                    TotEBlocks.OLIVE_WALL_HANGING_SIGN.get(),
+                                    TotEBlocks.GRAPE_HANGING_SIGN.get(),
+                                    TotEBlocks.GRAPE_WALL_HANGING_SIGN.get())
                             .build(null));
 
     public static void register(IEventBus eventBus){
