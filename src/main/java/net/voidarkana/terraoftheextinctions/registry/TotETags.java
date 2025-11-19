@@ -15,6 +15,7 @@ public class TotETags {
 
     public static class Blocks {
         public static final TagKey<Block> OLIVE_LOG_BLOCK = tag("olive_log_block");
+        public static final TagKey<Block> GRAPE_LOG_BLOCK = tag("grape_log_block");
 
         public static final TagKey<Block> PERCH_FOOD = tag("perch_food");
         public static final TagKey<Block> PERCH_ROE_NESTS = tag("is_valid_block_for_perch_to_lay_egg");
@@ -28,6 +29,7 @@ public class TotETags {
 
     public static class Items {
         public static final TagKey<Item> OLIVE_LOG_ITEM = tag("olive_log_item");
+        public static final TagKey<Item> GRAPE_LOG_ITEM = tag("grape_log_item");
 
         public static final TagKey<Item> PERCH_FOOD = tag("perch_food");
 

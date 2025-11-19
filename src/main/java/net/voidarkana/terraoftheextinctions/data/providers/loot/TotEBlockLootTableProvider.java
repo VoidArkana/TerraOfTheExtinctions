@@ -29,6 +29,7 @@ public class TotEBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
         this.dropWhenSilkTouch(TotEBlocks.PERCH_ROE.get());
 
+        //olive
         this.dropSelf(TotEBlocks.OLIVE_PLANKS.get());
         this.dropSelf(TotEBlocks.OLIVE_STAIRS.get());
         this.dropSelf(TotEBlocks.OLIVE_FENCE.get());
@@ -62,6 +63,42 @@ public class TotEBlockLootTableProvider extends BlockLootSubProvider {
         this.add(TotEBlocks.OLIVE_LEAVES.get(),
                 block -> createLeavesDrops(TotEBlocks.OLIVE_LEAVES.get(), TotEBlocks.OLIVE_SAPLING.get(), 0.05F, 0.0625F, 0.083333336F, 0.1F));
 
+        //grape
+        this.dropSelf(TotEBlocks.GRAPE_PLANKS.get());
+        this.dropSelf(TotEBlocks.GRAPE_STAIRS.get());
+        this.dropSelf(TotEBlocks.GRAPE_FENCE.get());
+        this.dropSelf(TotEBlocks.GRAPE_FENCE_GATE.get());
+        this.dropSelf(TotEBlocks.GRAPE_BUTTON.get());
+        this.dropSelf(TotEBlocks.GRAPE_PRESSURE_PLATE.get());
+        this.dropSelf(TotEBlocks.GRAPE_TRAPDOOR.get());
+        this.add(TotEBlocks.GRAPE_SLAB.get(),
+                block -> createSlabItemTable(TotEBlocks.GRAPE_SLAB.get()));
+        this.add(TotEBlocks.GRAPE_DOOR.get(),
+                block -> createDoorTable(TotEBlocks.GRAPE_DOOR.get()));
+
+        this.add(TotEBlocks.GRAPE_SIGN.get(),
+                block -> createSingleItemTable(TotEItems.GRAPE_SIGN.get()));
+        this.add(TotEBlocks.GRAPE_WALL_SIGN.get(),
+                block -> createSingleItemTable(TotEItems.GRAPE_SIGN.get()));
+        this.add(TotEBlocks.GRAPE_HANGING_SIGN.get(),
+                block -> createSingleItemTable(TotEItems.GRAPE_HANGING_SIGN.get()));
+        this.add(TotEBlocks.GRAPE_WALL_HANGING_SIGN.get(),
+                block -> createSingleItemTable(TotEItems.GRAPE_HANGING_SIGN.get()));
+
+        this.dropSelf(TotEBlocks.GRAPE_LOG.get());
+        this.dropSelf(TotEBlocks.STRIPPED_GRAPE_LOG.get());
+        this.dropSelf(TotEBlocks.GRAPE_WOOD.get());
+        this.dropSelf(TotEBlocks.STRIPPED_GRAPE_WOOD.get());
+
+        this.dropSelf(TotEBlocks.GRAPE_SAPLING.get());
+        this.add(TotEBlocks.POTTED_GRAPE_SAPLING.get(),
+                createPotFlowerItemTable(TotEBlocks.GRAPE_SAPLING.get()));
+
+        this.add(TotEBlocks.GRAPE_LEAVES.get(),
+                block -> createLeavesDrops(TotEBlocks.GRAPE_LEAVES.get(), TotEBlocks.GRAPE_SAPLING.get(), 0.05F, 0.0625F, 0.083333336F, 0.1F));
+
+
+        //salt
         this.dropSelf(TotEBlocks.SALT_BLOCK.get());
 
         this.add(TotEBlocks.SALT_CRYSTAL.get(), (p_252201_) -> {

@@ -33,7 +33,7 @@
   "entity.terraoftheextinctions.mod_boat": "Boat",
   "entity.terraoftheextinctions.mod_chest_boat": "Boat with Chest",
 
-  "terraoftheextinction.subtitles.block.olive_leaves.pick_olives": "Olives pop",
+  "terraoftheextinction.subtitles.block.olive_leaves.pick_olives": "Fruit pops",
 
   "entity.terraoftheextinctions.bleak": "Bleak",
   "item.terraoftheextinctions.bleak_spawn_egg": "Bleak Spawn Egg",
@@ -60,5 +60,35 @@
   "block.terraoftheextinctions.small_salt_bud": "Small Salt Bud",
   "block.terraoftheextinctions.medium_salt_bud": "Medium Salt Bud",
   "block.terraoftheextinctions.large_salt_bud": "Large Salt Bud",
-  "block.terraoftheextinctions.salt_crystal": "Salt Crystal"
+  "block.terraoftheextinctions.salt_crystal": "Salt Crystal",
+
+  "item.terraoftheextinctions.grapes": "Grapes",
+
+  "block.terraoftheextinctions.grape_planks": "Grape Planks",
+  "block.terraoftheextinctions.grape_stairs": "Grape Stairs",
+  "block.terraoftheextinctions.grape_slab": "Grape Slab",
+  "block.terraoftheextinctions.grape_button": "Grape Button",
+  "block.terraoftheextinctions.grape_pressure_plate": "Grape Pressure Plate",
+  "block.terraoftheextinctions.grape_fence": "Grape Fence",
+  "block.terraoftheextinctions.grape_fence_gate": "Grape Fence Gate",
+
+  "block.terraoftheextinctions.grape_door": "Grape Door",
+  "block.terraoftheextinctions.grape_trapdoor": "Grape Trapdoor",
+
+  "block.terraoftheextinctions.grape_log": "Grape Log",
+  "block.terraoftheextinctions.stripped_grape_log": "Stripped Grape Log",
+  "block.terraoftheextinctions.grape_wood": "Grape Wood",
+  "block.terraoftheextinctions.stripped_grape_wood": "Stripped Grape Wood",
+
+  "block.terraoftheextinctions.grape_sign": "Grape Sign",
+  "block.terraoftheextinctions.grape_wall_sign": "Grape Sign",
+  "block.terraoftheextinctions.grape_wall_hanging_sign": "Grape Hanging Sign",
+  "block.terraoftheextinctions.grape_hanging_sign": "Grape Hanging Sign",
+
+  "block.terraoftheextinctions.grape_leaves": "Grape Leaves",
+  "block.terraoftheextinctions.grape_sapling": "Grape Sapling",
+  "block.terraoftheextinctions.potted_grape_sapling": "Potted Grape Sapling",
+
+  "item.terraoftheextinctions.grape_boat": "Grape Boat",
+  "item.terraoftheextinctions.grape_chest_boat": "Grape Boat with Chest"
 }

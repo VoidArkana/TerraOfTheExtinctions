@@ -3,6 +3,7 @@ package net.voidarkana.terraoftheextinctions.registry;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -31,6 +32,23 @@ public class TotEItems {
     public static final RegistryObject<Item> OLIVE_CHEST_BOAT = ITEMS.register("olive_chest_boat",
             () -> new TotEBoatItem(true, TotEBoatEntity.Type.OLIVE, new Item.Properties()));
 
+    //Grape
+    public static final RegistryObject<Item> GRAPES = ITEMS.register("grapes",
+            () -> new Item(new Item.Properties().food(TotEFoods.GRAPES)));
+
+    public static final RegistryObject<Item> GRAPE_SIGN = ITEMS.register("grape_sign",
+            () -> new SignItem(new Item.Properties().stacksTo(16), TotEBlocks.GRAPE_SIGN.get(), TotEBlocks.GRAPE_WALL_SIGN.get()));
+
+    public static final RegistryObject<Item> GRAPE_HANGING_SIGN = ITEMS.register("grape_hanging_sign",
+            () -> new HangingSignItem(TotEBlocks.GRAPE_HANGING_SIGN.get(), TotEBlocks.GRAPE_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
+
+    public static final RegistryObject<Item> GRAPE_BOAT = ITEMS.register("grape_boat",
+            () -> new TotEBoatItem(false, TotEBoatEntity.Type.GRAPE, new Item.Properties()));
+    public static final RegistryObject<Item> GRAPE_CHEST_BOAT = ITEMS.register("grape_chest_boat",
+            () -> new TotEBoatItem(true, TotEBoatEntity.Type.GRAPE, new Item.Properties()));
+
+
+    //fish
     public static final RegistryObject<Item> FISH_MEAT = ITEMS.register("fish_meat",
             () -> new Item(new Item.Properties().food(TotEFoods.RAW_FISH)));
     public static final RegistryObject<Item> COOKED_FISH_MEAT = ITEMS.register("cooked_fish_meat",
@@ -54,4 +72,8 @@ public class TotEItems {
 
     public static final RegistryObject<Item> CANDIRU_SPAWN_EGG = ITEMS.register("candiru_spawn_egg",
             () -> new FishSpawnEggItem(TotEEntities.CANDIRU, 0x9d7a93, 0xaba4c3, new Item.Properties()));
+
+    public static void register(IEventBus eventBus){
+        ITEMS.register(eventBus);
+    }
 }

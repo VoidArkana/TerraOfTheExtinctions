@@ -41,6 +41,12 @@ public class FlammableWoodLogBlock extends RotatedPillarBlock {
             if(state.is(TotEBlocks.OLIVE_WOOD.get())){
                 return TotEBlocks.STRIPPED_OLIVE_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
+            if(state.is(TotEBlocks.GRAPE_LOG.get())){
+                return TotEBlocks.STRIPPED_GRAPE_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(TotEBlocks.GRAPE_WOOD.get())){
+                return TotEBlocks.STRIPPED_GRAPE_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
         }
         return super.getToolModifiedState(state, context, toolAction, simulate);
     }

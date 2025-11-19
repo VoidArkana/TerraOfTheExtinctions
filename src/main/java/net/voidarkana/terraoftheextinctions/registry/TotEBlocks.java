@@ -18,6 +18,7 @@ import net.voidarkana.terraoftheextinctions.common.blocks.signs.TotEHangingSignB
 import net.voidarkana.terraoftheextinctions.common.blocks.signs.TotEStandingSignBlock;
 import net.voidarkana.terraoftheextinctions.common.blocks.signs.TotEWallHangingSignBlock;
 import net.voidarkana.terraoftheextinctions.common.blocks.signs.TotEWallSignBlock;
+import net.voidarkana.terraoftheextinctions.common.worldgen.tree.GrapeTreeGrower;
 import net.voidarkana.terraoftheextinctions.common.worldgen.tree.OliveTreeGrower;
 
 import java.util.function.Supplier;
@@ -76,7 +77,7 @@ public class TotEBlocks {
 
     //Olive Leaves
     public static final RegistryObject<Block> OLIVE_LEAVES = registerBlock("olive_leaves",
-            () -> new OliveLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
+            () -> new FruityLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES), TotEItems.OLIVES));
 
     //Olive Sapling Blocks
     public static final RegistryObject<Block> OLIVE_SAPLING = registerBlock("olive_sapling",
@@ -107,6 +108,65 @@ public class TotEBlocks {
     public static final RegistryObject<Block> SMALL_SALT_BUD = registerBlock("small_salt_bud",
             () -> new SaltClusterBlock(3, 4, BlockBehaviour.Properties.copy(SALT_CRYSTAL.get())));
 
+    //Grape
+
+    //Grape plank blocks
+    public static final RegistryObject<Block> GRAPE_PLANKS = registerBlock("grape_planks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).ignitedByLava()));
+    public static final RegistryObject<Block> GRAPE_STAIRS = registerBlock("grape_stairs",
+            () -> new StairBlock(() -> TotEBlocks.GRAPE_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)
+                    .ignitedByLava()));
+    public static final RegistryObject<Block> GRAPE_SLAB = registerBlock("grape_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).ignitedByLava()));
+    public static final RegistryObject<Block> GRAPE_BUTTON = registerBlock("grape_button",
+            () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON).ignitedByLava()
+                    , TotEWoodTypes.GRAPE.setType(), 25, true));
+    public static final RegistryObject<Block> GRAPE_PRESSURE_PLATE = registerBlock("grape_pressure_plate",
+            () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy
+                    (Blocks.OAK_PRESSURE_PLATE).ignitedByLava(), TotEWoodTypes.GRAPE.setType()));
+    public static final RegistryObject<Block> GRAPE_FENCE = registerBlock("grape_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE).ignitedByLava()));
+    public static final RegistryObject<Block> GRAPE_FENCE_GATE = registerBlock("grape_fence_gate",
+            () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE).ignitedByLava(),
+                    SoundEvents.FENCE_GATE_OPEN, SoundEvents.FENCE_GATE_CLOSE));
+
+
+    //Grape Door and Trapdoor
+    public static final RegistryObject<Block> GRAPE_DOOR = registerBlock("grape_door",
+            () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noOcclusion(), TotEWoodTypes.GRAPE.setType()));
+    public static final RegistryObject<Block> GRAPE_TRAPDOOR = registerBlock("grape_trapdoor",
+            () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noOcclusion(), TotEWoodTypes.GRAPE.setType()));
+
+    //Grape signs
+    public static final RegistryObject<Block> GRAPE_SIGN = BLOCKS.register("grape_sign",
+            () -> new TotEStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_SIGN), TotEWoodTypes.GRAPE));
+    public static final RegistryObject<Block> GRAPE_WALL_SIGN = BLOCKS.register("grape_wall_sign",
+            () -> new TotEWallSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_SIGN), TotEWoodTypes.GRAPE));
+    public static final RegistryObject<Block> GRAPE_HANGING_SIGN = BLOCKS.register("grape_hanging_sign",
+            () -> new TotEHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_HANGING_SIGN), TotEWoodTypes.GRAPE));
+    public static final RegistryObject<Block> GRAPE_WALL_HANGING_SIGN = BLOCKS.register("grape_wall_hanging_sign",
+            () -> new TotEWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_HANGING_SIGN), TotEWoodTypes.GRAPE));
+
+    //Grape logs and wood
+    public static final RegistryObject<Block> GRAPE_LOG = registerBlock("grape_log",
+            () -> new FlammableWoodLogBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
+    public static final RegistryObject<Block> GRAPE_WOOD = registerBlock("grape_wood",
+            () -> new FlammableWoodLogBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
+    public static final RegistryObject<Block> STRIPPED_GRAPE_LOG = registerBlock("stripped_grape_log",
+            () -> new FlammableWoodLogBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
+    public static final RegistryObject<Block> STRIPPED_GRAPE_WOOD = registerBlock("stripped_grape_wood",
+            () -> new FlammableWoodLogBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
+
+    //Grape Leaves
+    public static final RegistryObject<Block> GRAPE_LEAVES = registerBlock("grape_leaves",
+            () -> new FruityLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES), TotEItems.GRAPES));
+
+    //Grape Sapling Blocks
+    public static final RegistryObject<Block> GRAPE_SAPLING = registerBlock("grape_sapling",
+            () -> new SaplingBlock(new GrapeTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING).noOcclusion().noCollission()));
+    public static final RegistryObject<Block> POTTED_GRAPE_SAPLING = registerBlock("potted_grape_sapling",
+            () -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), TotEBlocks.GRAPE_SAPLING,
+                    BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM).noOcclusion()));
 
 
     //registers

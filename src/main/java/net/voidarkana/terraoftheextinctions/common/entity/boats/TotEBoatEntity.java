@@ -36,6 +36,7 @@ public class TotEBoatEntity extends Boat {
     public Item getDropItem() {
         return switch (getModVariant()) {
             case OLIVE -> TotEItems.OLIVE_BOAT.get();
+            case GRAPE -> TotEItems.GRAPE_BOAT.get();
         };
     }
 
@@ -63,7 +64,8 @@ public class TotEBoatEntity extends Boat {
     }
 
     public static enum Type implements StringRepresentable {
-        OLIVE(TotEBlocks.OLIVE_PLANKS.get(), "olive");
+        OLIVE(TotEBlocks.OLIVE_PLANKS.get(), "olive"),
+        GRAPE(TotEBlocks.GRAPE_PLANKS.get(), "grape");
 
         private final String name;
         private final Block planks;

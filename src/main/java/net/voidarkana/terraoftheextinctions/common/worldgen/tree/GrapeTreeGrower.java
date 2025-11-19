@@ -12,7 +12,7 @@ public class GrapeTreeGrower extends AbstractTreeGrower {
     @Nullable
     @Override
     protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource pRandom, boolean pHasFlowers) {
-        return TotEConfiguredFeatures.OLIVE_KEY;
+        return TotEConfiguredFeatures.GRAPE_KEY;
     }
 
 }

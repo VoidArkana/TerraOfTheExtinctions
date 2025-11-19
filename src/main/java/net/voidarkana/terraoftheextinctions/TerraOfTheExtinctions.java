@@ -32,8 +32,8 @@ public class TerraOfTheExtinctions
     {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        TotEItems.ITEMS.register(bus);
         TotEBlocks.registerBlocks(bus);
+        TotEItems.register(bus);
         TotEEntities.register(bus);
         TotESounds.register(bus);
         TotEBlockEntities.register(bus);
@@ -57,6 +57,11 @@ public class TerraOfTheExtinctions
 
             ComposterBlock.COMPOSTABLES.put(TotEBlocks.OLIVE_SAPLING.get().asItem(), 0.4F);
             ComposterBlock.COMPOSTABLES.put(TotEBlocks.OLIVE_LEAVES.get().asItem(), 0.4F);
+
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(TotEBlocks.GRAPE_SAPLING.getId(), TotEBlocks.POTTED_GRAPE_SAPLING);
+
+            ComposterBlock.COMPOSTABLES.put(TotEBlocks.GRAPE_SAPLING.get().asItem(), 0.4F);
+            ComposterBlock.COMPOSTABLES.put(TotEBlocks.GRAPE_LEAVES.get().asItem(), 0.4F);
         });
     }
 

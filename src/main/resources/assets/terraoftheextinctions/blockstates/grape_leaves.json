@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "terraoftheextinctions:block/grape_leaves"
+    },
+    "age=1": {
+      "model": "terraoftheextinctions:block/grape_leaves_with_grapes"
+    }
+  }
+}

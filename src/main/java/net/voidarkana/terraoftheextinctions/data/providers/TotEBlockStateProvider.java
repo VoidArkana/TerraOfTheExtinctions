@@ -53,6 +53,39 @@ public class TotEBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(TotEBlocks.POTTED_OLIVE_SAPLING.get(), models().singleTexture("potted_olive_sapling", new ResourceLocation(ResourceLocation.DEFAULT_NAMESPACE, "flower_pot_cross"), "plant",
                 blockTexture(TotEBlocks.OLIVE_SAPLING.get())).renderType("cutout"));
 
+        //grape woodset
+        blockWithItem(TotEBlocks.GRAPE_PLANKS);
+        stairsBlock(((StairBlock) TotEBlocks.GRAPE_STAIRS.get()), blockTexture(TotEBlocks.GRAPE_PLANKS.get()));
+        slabBlock(((SlabBlock) TotEBlocks.GRAPE_SLAB.get()), blockTexture(TotEBlocks.GRAPE_PLANKS.get()), blockTexture(TotEBlocks.GRAPE_PLANKS.get()));
+        buttonBlock(((ButtonBlock) TotEBlocks.GRAPE_BUTTON.get()), blockTexture(TotEBlocks.GRAPE_PLANKS.get()));
+        pressurePlateBlock(((PressurePlateBlock) TotEBlocks.GRAPE_PRESSURE_PLATE.get()), blockTexture(TotEBlocks.GRAPE_PLANKS.get()));
+        fenceBlock(((FenceBlock) TotEBlocks.GRAPE_FENCE.get()), blockTexture(TotEBlocks.GRAPE_PLANKS.get()));
+        fenceGateBlock(((FenceGateBlock) TotEBlocks.GRAPE_FENCE_GATE.get()), blockTexture(TotEBlocks.GRAPE_PLANKS.get()));
+
+        doorBlockWithRenderType(((DoorBlock) TotEBlocks.GRAPE_DOOR.get()), modLoc("block/grape_door_bottom"), modLoc("block/grape_door_top"), "cutout");
+        trapdoorBlockWithRenderType(((TrapDoorBlock) TotEBlocks.GRAPE_TRAPDOOR.get()), modLoc("block/grape_trapdoor"), true, "cutout");
+
+        signBlock(((StandingSignBlock) TotEBlocks.GRAPE_SIGN.get()), ((WallSignBlock) TotEBlocks.GRAPE_WALL_SIGN.get()),
+                blockTexture(TotEBlocks.GRAPE_PLANKS.get()));
+        hangingSignBlock(TotEBlocks.GRAPE_HANGING_SIGN.get(), TotEBlocks.GRAPE_WALL_HANGING_SIGN.get(),
+                blockTexture(TotEBlocks.GRAPE_PLANKS.get()));
+
+        logBlock(((RotatedPillarBlock) TotEBlocks.GRAPE_LOG.get()));
+        axisBlock(((RotatedPillarBlock) TotEBlocks.STRIPPED_GRAPE_LOG.get()), blockTexture(TotEBlocks.STRIPPED_GRAPE_LOG.get()), new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "block/stripped_grape_log_top"));
+        blockItem(TotEBlocks.GRAPE_LOG);
+        blockItem(TotEBlocks.STRIPPED_GRAPE_LOG);
+
+        axisBlock(((RotatedPillarBlock) TotEBlocks.GRAPE_WOOD.get()), blockTexture(TotEBlocks.GRAPE_LOG.get()), blockTexture(TotEBlocks.GRAPE_LOG.get()));
+        axisBlock(((RotatedPillarBlock) TotEBlocks.STRIPPED_GRAPE_WOOD.get()), blockTexture(TotEBlocks.STRIPPED_GRAPE_LOG.get()), blockTexture(TotEBlocks.STRIPPED_GRAPE_LOG.get()));
+        blockItem(TotEBlocks.GRAPE_WOOD);
+        blockItem(TotEBlocks.STRIPPED_GRAPE_WOOD);
+
+        simpleBlockWithItem(TotEBlocks.GRAPE_SAPLING.get(), models().cross(blockTexture(TotEBlocks.GRAPE_SAPLING.get()).getPath(),
+                blockTexture(TotEBlocks.GRAPE_SAPLING.get())).renderType("cutout"));
+
+        simpleBlockWithItem(TotEBlocks.POTTED_GRAPE_SAPLING.get(), models().singleTexture("potted_grape_sapling", new ResourceLocation(ResourceLocation.DEFAULT_NAMESPACE, "flower_pot_cross"), "plant",
+                blockTexture(TotEBlocks.GRAPE_SAPLING.get())).renderType("cutout"));
+
         blockWithItem(TotEBlocks.SALT_BLOCK);
     }
 

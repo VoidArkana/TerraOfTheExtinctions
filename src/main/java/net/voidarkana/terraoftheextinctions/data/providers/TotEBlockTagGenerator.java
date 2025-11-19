@@ -47,7 +47,25 @@ public class TotEBlockTagGenerator extends BlockTagsProvider {
                 TotEBlocks.OLIVE_SIGN.get(),
                 TotEBlocks.OLIVE_WALL_SIGN.get(),
                 TotEBlocks.OLIVE_HANGING_SIGN.get(),
-                TotEBlocks.OLIVE_WALL_HANGING_SIGN.get()
+                TotEBlocks.OLIVE_WALL_HANGING_SIGN.get(),
+
+                TotEBlocks.GRAPE_PLANKS.get(),
+                TotEBlocks.GRAPE_STAIRS.get(),
+                TotEBlocks.GRAPE_SLAB.get(),
+                TotEBlocks.GRAPE_BUTTON.get(),
+                TotEBlocks.GRAPE_PRESSURE_PLATE.get(),
+                TotEBlocks.GRAPE_FENCE.get(),
+                TotEBlocks.GRAPE_FENCE_GATE.get(),
+                TotEBlocks.GRAPE_DOOR.get(),
+                TotEBlocks.GRAPE_TRAPDOOR.get(),
+                TotEBlocks.GRAPE_LOG.get(),
+                TotEBlocks.STRIPPED_GRAPE_LOG.get(),
+                TotEBlocks.GRAPE_WOOD.get(),
+                TotEBlocks.STRIPPED_GRAPE_WOOD.get(),
+                TotEBlocks.GRAPE_SIGN.get(),
+                TotEBlocks.GRAPE_WALL_SIGN.get(),
+                TotEBlocks.GRAPE_HANGING_SIGN.get(),
+                TotEBlocks.GRAPE_WALL_HANGING_SIGN.get()
         );
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
@@ -59,7 +77,8 @@ public class TotEBlockTagGenerator extends BlockTagsProvider {
         );
 
         this.tag(BlockTags.PLANKS).add(
-                TotEBlocks.OLIVE_PLANKS.get()
+                TotEBlocks.OLIVE_PLANKS.get(),
+                TotEBlocks.GRAPE_PLANKS.get()
         );
 
         this.tag(TotETags.Blocks.OLIVE_LOG_BLOCK).add(
@@ -69,62 +88,84 @@ public class TotEBlockTagGenerator extends BlockTagsProvider {
                 TotEBlocks.STRIPPED_OLIVE_WOOD.get()
         );
 
+        this.tag(TotETags.Blocks.GRAPE_LOG_BLOCK).add(
+                TotEBlocks.GRAPE_LOG.get(),
+                TotEBlocks.STRIPPED_GRAPE_LOG.get(),
+                TotEBlocks.GRAPE_WOOD.get(),
+                TotEBlocks.STRIPPED_GRAPE_WOOD.get()
+        );
+
         this.tag(BlockTags.LOGS_THAT_BURN)
                 .addTag(TotETags.Blocks.OLIVE_LOG_BLOCK)
+                .addTag(TotETags.Blocks.GRAPE_LOG_BLOCK)
         ;
 
         this.tag(BlockTags.MINEABLE_WITH_HOE).add(
-                TotEBlocks.OLIVE_LEAVES.get()
+                TotEBlocks.OLIVE_LEAVES.get(),
+                TotEBlocks.GRAPE_LEAVES.get()
         );
 
         this.tag(BlockTags.LEAVES).add(
-                TotEBlocks.OLIVE_LEAVES.get()
+                TotEBlocks.OLIVE_LEAVES.get(),
+                TotEBlocks.GRAPE_LEAVES.get()
         );
         this.tag(BlockTags.WOODEN_FENCES).add(
-                TotEBlocks.OLIVE_FENCE.get()
+                TotEBlocks.OLIVE_FENCE.get(),
+                TotEBlocks.GRAPE_FENCE.get()
         );
         this.tag(BlockTags.FENCE_GATES).add(
-                TotEBlocks.OLIVE_FENCE_GATE.get()
+                TotEBlocks.OLIVE_FENCE_GATE.get(),
+                TotEBlocks.GRAPE_FENCE_GATE.get()
         );
 
         this.tag(BlockTags.WOODEN_DOORS).add(
-                TotEBlocks.OLIVE_DOOR.get()
+                TotEBlocks.OLIVE_DOOR.get(),
+                TotEBlocks.GRAPE_DOOR.get()
         );
 
         this.tag(BlockTags.WOODEN_TRAPDOORS).add(
-                TotEBlocks.OLIVE_TRAPDOOR.get()
+                TotEBlocks.OLIVE_TRAPDOOR.get(),
+                TotEBlocks.GRAPE_TRAPDOOR.get()
         );
 
         this.tag(BlockTags.WOODEN_STAIRS).add(
-                TotEBlocks.OLIVE_STAIRS.get()
+                TotEBlocks.OLIVE_STAIRS.get(),
+                TotEBlocks.GRAPE_STAIRS.get()
         );
 
         this.tag(BlockTags.WOODEN_SLABS).add(
-                TotEBlocks.OLIVE_SLAB.get()
+                TotEBlocks.OLIVE_SLAB.get(),
+                TotEBlocks.GRAPE_SLAB.get()
         );
 
         this.tag(BlockTags.WOODEN_BUTTONS).add(
-                TotEBlocks.OLIVE_BUTTON.get()
+                TotEBlocks.OLIVE_BUTTON.get(),
+                TotEBlocks.GRAPE_BUTTON.get()
         );
 
         this.tag(BlockTags.WOODEN_PRESSURE_PLATES).add(
-                TotEBlocks.OLIVE_PRESSURE_PLATE.get()
+                TotEBlocks.OLIVE_PRESSURE_PLATE.get(),
+                TotEBlocks.GRAPE_PRESSURE_PLATE.get()
         );
 
         this.tag(BlockTags.SIGNS).add(
-                TotEBlocks.OLIVE_SIGN.get()
+                TotEBlocks.OLIVE_SIGN.get(),
+                TotEBlocks.GRAPE_SIGN.get()
         );
 
         this.tag(BlockTags.WALL_SIGNS).add(
-                TotEBlocks.OLIVE_WALL_SIGN.get()
+                TotEBlocks.OLIVE_WALL_SIGN.get(),
+                TotEBlocks.GRAPE_WALL_SIGN.get()
         );
 
         this.tag(BlockTags.CEILING_HANGING_SIGNS).add(
-                TotEBlocks.OLIVE_HANGING_SIGN.get()
+                TotEBlocks.OLIVE_HANGING_SIGN.get(),
+                TotEBlocks.GRAPE_HANGING_SIGN.get()
         );
 
         this.tag(BlockTags.WALL_HANGING_SIGNS).add(
-                TotEBlocks.OLIVE_WALL_HANGING_SIGN.get()
+                TotEBlocks.OLIVE_WALL_HANGING_SIGN.get(),
+                TotEBlocks.GRAPE_WALL_HANGING_SIGN.get()
         );
     }
 }

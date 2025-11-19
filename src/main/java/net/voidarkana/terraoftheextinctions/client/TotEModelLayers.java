@@ -11,6 +11,11 @@ public class TotEModelLayers {
     public static final ModelLayerLocation OLIVE_CHEST_BOAT_LAYER = new ModelLayerLocation(
             new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "chest_boat/olive"), "main");
 
+    public static final ModelLayerLocation GRAPE_BOAT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "boat/grape"), "main");
+    public static final ModelLayerLocation GRAPE_CHEST_BOAT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "chest_boat/grape"), "main");
+
     public static final ModelLayerLocation BLEAK_LAYER = new ModelLayerLocation(
             new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "bleak"), "main");
     public static final ModelLayerLocation PERCH_LAYER = new ModelLayerLocation(

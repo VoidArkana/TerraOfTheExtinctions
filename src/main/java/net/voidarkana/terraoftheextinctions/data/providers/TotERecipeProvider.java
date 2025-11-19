@@ -61,8 +61,43 @@ public class TotERecipeProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(TotEBlocks.OLIVE_LOG.get()), has(TotEBlocks.OLIVE_LOG.get()))
                 .save(consumer);
 
+        //salt
         makeIngotToBlock(TotEItems.SALT, TotEBlocks.SALT_BLOCK).save(consumer);
         makeBlockToIngot(TotEBlocks.SALT_BLOCK, TotEItems.SALT).save(consumer);
+
+
+        //Grape woodset
+        makePlanks(TotEBlocks.GRAPE_PLANKS, TotETags.Items.GRAPE_LOG_ITEM).save(consumer);
+        makeWood(TotEBlocks.GRAPE_WOOD, TotEBlocks.GRAPE_LOG).save(consumer);
+        makeWood(TotEBlocks.STRIPPED_GRAPE_WOOD, TotEBlocks.STRIPPED_GRAPE_LOG).save(consumer);
+        makeStairs(TotEBlocks.GRAPE_PLANKS, TotEBlocks.GRAPE_STAIRS).save(consumer);
+        makeSlab(TotEBlocks.GRAPE_PLANKS, TotEBlocks.GRAPE_SLAB).save(consumer);
+        makeFence(TotEBlocks.GRAPE_FENCE, TotEBlocks.GRAPE_PLANKS).save(consumer);
+        makeFenceGate(TotEBlocks.GRAPE_FENCE_GATE, TotEBlocks.GRAPE_PLANKS).save(consumer);
+        makeDoor(TotEBlocks.GRAPE_DOOR, TotEBlocks.GRAPE_PLANKS).save(consumer);
+        makeTrapdoor(TotEBlocks.GRAPE_TRAPDOOR, TotEBlocks.GRAPE_PLANKS).save(consumer);
+        makeButton(TotEBlocks.GRAPE_BUTTON, TotEBlocks.GRAPE_PLANKS).save(consumer);
+        makePressurePlate(TotEBlocks.GRAPE_PRESSURE_PLATE, TotEBlocks.GRAPE_PLANKS).save(consumer);
+
+        //Grape sign
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TotEItems.GRAPE_SIGN.get(), 3)
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern(" # ")
+                .define('S', TotEBlocks.GRAPE_PLANKS.get())
+                .define('#', Tags.Items.RODS_WOODEN)
+                .unlockedBy(getHasName(TotEBlocks.GRAPE_LOG.get()), has(TotEBlocks.GRAPE_LOG.get()))
+                .save(consumer);
+
+        //Grape hanging sign
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TotEItems.GRAPE_HANGING_SIGN.get(), 6)
+                .pattern("# #")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('#', Items.CHAIN)
+                .define('S', TotEBlocks.STRIPPED_GRAPE_LOG.get())
+                .unlockedBy(getHasName(TotEBlocks.GRAPE_LOG.get()), has(TotEBlocks.GRAPE_LOG.get()))
+                .save(consumer);
     }
     public ShapelessRecipeBuilder makePlanks(Supplier<? extends Block> plankOut, TagKey<Item> logIn) {
         return ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, (ItemLike)plankOut.get(), 4).requires(logIn).group("planks").unlockedBy("has_log", has(logIn));

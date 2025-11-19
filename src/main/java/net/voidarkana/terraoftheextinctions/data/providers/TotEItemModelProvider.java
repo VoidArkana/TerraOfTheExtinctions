@@ -55,9 +55,33 @@ public class TotEItemModelProvider extends ItemModelProvider {
         simpleItem(TotEItems.OLIVE_BOAT);
         simpleItem(TotEItems.OLIVE_CHEST_BOAT);
 
+        // GRAPE
+        simpleItem(TotEItems.GRAPES);
+        simpleBlockItem(TotEBlocks.GRAPE_DOOR);
+
+        simpleBlockItem(TotEBlocks.GRAPE_SAPLING);
+
+        trapdoorItem(TotEBlocks.GRAPE_TRAPDOOR);
+
+        evenSimplerBlockItem(TotEBlocks.GRAPE_STAIRS);
+        evenSimplerBlockItem(TotEBlocks.GRAPE_SLAB);
+        evenSimplerBlockItem(TotEBlocks.GRAPE_FENCE_GATE);
+        evenSimplerBlockItem(TotEBlocks.GRAPE_PRESSURE_PLATE);
+
+        fenceItem(TotEBlocks.GRAPE_FENCE, TotEBlocks.GRAPE_PLANKS);
+        buttonItem(TotEBlocks.GRAPE_BUTTON, TotEBlocks.GRAPE_PLANKS);
+
+        simpleItem(TotEItems.GRAPE_SIGN);
+        simpleItem(TotEItems.GRAPE_HANGING_SIGN);
+
+        simpleItem(TotEItems.GRAPE_BOAT);
+        simpleItem(TotEItems.GRAPE_CHEST_BOAT);
+
+        //Fish
         simpleItem(TotEItems.FISH_MEAT);
         simpleItem(TotEItems.COOKED_FISH_MEAT);
 
+        //Salt
         simpleBlockItem(TotEBlocks.SALT_CRYSTAL);
         simpleBlockItem(TotEBlocks.SMALL_SALT_BUD);
         simpleBlockItem(TotEBlocks.MEDIUM_SALT_BUD);

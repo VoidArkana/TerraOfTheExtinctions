@@ -33,6 +33,9 @@ public class TotEChestBoatEntity extends ChestBoat {
             case OLIVE -> {
                 return TotEItems.OLIVE_CHEST_BOAT.get();
             }
+            case GRAPE -> {
+                return TotEItems.GRAPE_CHEST_BOAT.get();
+            }
         }
         return super.getDropItem();
     }

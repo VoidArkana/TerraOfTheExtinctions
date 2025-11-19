@@ -29,6 +29,34 @@ public class TotECreativeTab {
                         output.accept(TotEBlocks.PERCH_ROE.get());
                         output.accept(TotEItems.PERCH_SCALES.get());
 
+                        output.accept(TotEItems.GRAPES.get());
+
+                        output.accept(TotEBlocks.GRAPE_PLANKS.get());
+
+                        output.accept(TotEBlocks.GRAPE_LOG.get());
+                        output.accept(TotEBlocks.STRIPPED_GRAPE_LOG.get());
+                        output.accept(TotEBlocks.GRAPE_WOOD.get());
+                        output.accept(TotEBlocks.STRIPPED_GRAPE_WOOD.get());
+
+                        output.accept(TotEBlocks.GRAPE_STAIRS.get());
+                        output.accept(TotEBlocks.GRAPE_SLAB.get());
+                        output.accept(TotEBlocks.GRAPE_FENCE.get());
+                        output.accept(TotEBlocks.GRAPE_FENCE_GATE.get());
+                        output.accept(TotEBlocks.GRAPE_DOOR.get());
+                        output.accept(TotEBlocks.GRAPE_TRAPDOOR.get());
+                        output.accept(TotEBlocks.GRAPE_PRESSURE_PLATE.get());
+                        output.accept(TotEBlocks.GRAPE_BUTTON.get());
+
+                        output.accept(TotEItems.GRAPE_SIGN.get());
+                        output.accept(TotEItems.GRAPE_HANGING_SIGN.get());
+                        output.accept(TotEItems.GRAPE_BOAT.get());
+                        output.accept(TotEItems.GRAPE_CHEST_BOAT.get());
+
+                        output.accept(TotEBlocks.GRAPE_LEAVES.get());
+                        output.accept(TotEBlocks.GRAPE_SAPLING.get());
+
+
+
                         output.accept(TotEItems.OLIVES.get());
 
                         output.accept(TotEBlocks.OLIVE_PLANKS.get());

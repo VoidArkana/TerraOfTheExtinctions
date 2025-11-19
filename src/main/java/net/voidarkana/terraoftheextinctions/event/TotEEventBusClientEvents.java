@@ -23,6 +23,9 @@ public class TotEEventBusClientEvents {
         event.registerLayerDefinition(TotEModelLayers.OLIVE_BOAT_LAYER, BoatModel::createBodyModel);
         event.registerLayerDefinition(TotEModelLayers.OLIVE_CHEST_BOAT_LAYER, ChestBoatModel::createBodyModel);
 
+        event.registerLayerDefinition(TotEModelLayers.GRAPE_BOAT_LAYER, BoatModel::createBodyModel);
+        event.registerLayerDefinition(TotEModelLayers.GRAPE_CHEST_BOAT_LAYER, ChestBoatModel::createBodyModel);
+
         event.registerLayerDefinition(TotEModelLayers.BLEAK_LAYER, BleakModel::createBodyLayer);
         event.registerLayerDefinition(TotEModelLayers.PERCH_LAYER, PerchModel::createBodyLayer);
         event.registerLayerDefinition(TotEModelLayers.CANDIRU_LAYER, CandiruModel::createBodyLayer);

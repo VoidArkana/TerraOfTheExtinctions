@@ -36,6 +36,8 @@ public class TotEConfiguredFeatures {
     public static final DeferredRegister<Feature<?>> MOD_FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, TerraOfTheExtinctions.MOD_ID);
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> OLIVE_KEY = registerKey("olive");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GRAPE_KEY = registerKey("grape_tree");
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> SALT_PILLAR_RANDOM_PATCH = registerKey("salt_pillar_random_patch");
 
     public static final RegistryObject<Feature<BlockColumnConfiguration>> UNDERWATER_COLUMN_FEATURE =
@@ -49,6 +51,14 @@ public class TotEConfiguredFeatures {
                         BlockStateProvider.simple(TotEBlocks.OLIVE_LEAVES.get()),
                         new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
                         new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());
+
+        register(context, GRAPE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder
+                (BlockStateProvider.simple(TotEBlocks.GRAPE_LOG.get()),
+                        new StraightTrunkPlacer(4, 4, 1),
+                        BlockStateProvider.simple(TotEBlocks.GRAPE_LEAVES.get()),
+                        new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+                        new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());
+
 
         register(context, SALT_PILLAR_RANDOM_PATCH, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(50, 8 ,8,

@@ -12,7 +12,7 @@ public class TotESounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, TerraOfTheExtinctions.MOD_ID);
 
-    public static final RegistryObject<SoundEvent> OLIVE_LEAVES_PICK_OLIVES = registerSoundEvents("block.olive_leaves.pick_olives");
+    public static final RegistryObject<SoundEvent> TREE_LEAVES_PICK_HARVEST = registerSoundEvents("block.olive_leaves.pick_olives");
 
     private static RegistryObject<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(TerraOfTheExtinctions.MOD_ID, name)));
