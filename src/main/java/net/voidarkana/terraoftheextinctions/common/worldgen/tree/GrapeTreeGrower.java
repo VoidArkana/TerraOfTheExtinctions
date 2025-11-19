@@ -7,7 +7,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.voidarkana.terraoftheextinctions.common.worldgen.TotEConfiguredFeatures;
 import org.jetbrains.annotations.Nullable;
 
-public class OliveTreeGrower extends AbstractTreeGrower {
+public class GrapeTreeGrower extends AbstractTreeGrower {
 
     @Nullable
     @Override

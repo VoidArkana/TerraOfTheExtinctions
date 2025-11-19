@@ -50,6 +50,14 @@ public class TotEBlockTagGenerator extends BlockTagsProvider {
                 TotEBlocks.OLIVE_WALL_HANGING_SIGN.get()
         );
 
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
+                TotEBlocks.SALT_BLOCK.get(),
+                TotEBlocks.SALT_CRYSTAL.get(),
+                TotEBlocks.SMALL_SALT_BUD.get(),
+                TotEBlocks.MEDIUM_SALT_BUD.get(),
+                TotEBlocks.LARGE_SALT_BUD.get()
+        );
+
         this.tag(BlockTags.PLANKS).add(
                 TotEBlocks.OLIVE_PLANKS.get()
         );

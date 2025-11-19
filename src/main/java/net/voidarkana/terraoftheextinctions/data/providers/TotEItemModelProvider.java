@@ -23,6 +23,8 @@ public class TotEItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
 
+        simpleItem(TotEItems.SALT);
+
         withExistingParent(TotEItems.BLEAK_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
         simpleItem(TotEItems.PERCH_SCALES);
@@ -53,9 +55,13 @@ public class TotEItemModelProvider extends ItemModelProvider {
         simpleItem(TotEItems.OLIVE_BOAT);
         simpleItem(TotEItems.OLIVE_CHEST_BOAT);
 
-
         simpleItem(TotEItems.FISH_MEAT);
         simpleItem(TotEItems.COOKED_FISH_MEAT);
+
+        simpleBlockItem(TotEBlocks.SALT_CRYSTAL);
+        simpleBlockItem(TotEBlocks.SMALL_SALT_BUD);
+        simpleBlockItem(TotEBlocks.MEDIUM_SALT_BUD);
+        simpleBlockItem(TotEBlocks.LARGE_SALT_BUD);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){

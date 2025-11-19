@@ -53,5 +53,12 @@
 
   "death.attack.candiru_infestation": "%1$s was eaten from the inside",
   "death.attack.candiru_infestation.item": "%1$s was eaten from the inside whilst trying to escape %2$s using %3$s",
-  "death.attack.candiru_infestation.player": "%1$s was eaten from the inside whilst trying to escape %2$s"
+  "death.attack.candiru_infestation.player": "%1$s was eaten from the inside whilst trying to escape %2$s",
+
+  "item.terraoftheextinctions.salt": "Salt",
+  "block.terraoftheextinctions.salt_block": "Salt Block",
+  "block.terraoftheextinctions.small_salt_bud": "Small Salt Bud",
+  "block.terraoftheextinctions.medium_salt_bud": "Medium Salt Bud",
+  "block.terraoftheextinctions.large_salt_bud": "Large Salt Bud",
+  "block.terraoftheextinctions.salt_crystal": "Salt Crystal"
 }

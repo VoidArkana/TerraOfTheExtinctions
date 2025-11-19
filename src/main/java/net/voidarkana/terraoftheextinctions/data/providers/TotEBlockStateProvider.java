@@ -47,14 +47,13 @@ public class TotEBlockStateProvider extends BlockStateProvider {
         blockItem(TotEBlocks.OLIVE_WOOD);
         blockItem(TotEBlocks.STRIPPED_OLIVE_WOOD);
 
-//        leavesBlock(TotEBlocks.OLIVE_LEAVES);
-
         simpleBlockWithItem(TotEBlocks.OLIVE_SAPLING.get(), models().cross(blockTexture(TotEBlocks.OLIVE_SAPLING.get()).getPath(),
                 blockTexture(TotEBlocks.OLIVE_SAPLING.get())).renderType("cutout"));
 
         simpleBlockWithItem(TotEBlocks.POTTED_OLIVE_SAPLING.get(), models().singleTexture("potted_olive_sapling", new ResourceLocation(ResourceLocation.DEFAULT_NAMESPACE, "flower_pot_cross"), "plant",
                 blockTexture(TotEBlocks.OLIVE_SAPLING.get())).renderType("cutout"));
 
+        blockWithItem(TotEBlocks.SALT_BLOCK);
     }
 
     private void leavesBlock(RegistryObject<Block> blockRegistryObject) {

@@ -11,6 +11,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.voidarkana.terraoftheextinctions.common.entity.TotEEntityPlacements;
+import net.voidarkana.terraoftheextinctions.common.worldgen.TotEConfiguredFeatures;
 import net.voidarkana.terraoftheextinctions.event.TotEModEvents;
 import net.voidarkana.terraoftheextinctions.network.TotEMessages;
 import net.voidarkana.terraoftheextinctions.registry.*;

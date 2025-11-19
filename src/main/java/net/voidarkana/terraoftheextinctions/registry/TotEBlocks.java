@@ -6,14 +6,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
-import net.voidarkana.terraoftheextinctions.common.blocks.FishRoeBlock;
-import net.voidarkana.terraoftheextinctions.common.blocks.FlammableWoodLogBlock;
-import net.voidarkana.terraoftheextinctions.common.blocks.OliveLeavesBlock;
+import net.voidarkana.terraoftheextinctions.common.blocks.*;
 import net.voidarkana.terraoftheextinctions.common.blocks.signs.TotEHangingSignBlock;
 import net.voidarkana.terraoftheextinctions.common.blocks.signs.TotEStandingSignBlock;
 import net.voidarkana.terraoftheextinctions.common.blocks.signs.TotEWallHangingSignBlock;
@@ -89,6 +89,27 @@ public class TotEBlocks {
     public static final RegistryObject<Block> PERCH_ROE = registerBlock("perch_roe",
             () -> new FishRoeBlock(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak().randomTicks(), TotEEntities.PERCH));
 
+    //Salt
+    public static final RegistryObject<Block> SALT_BLOCK = registerBlock("salt_block",
+            () -> new SaltBlock(BlockBehaviour.Properties.copy(Blocks.CALCITE)));
+
+    public static final RegistryObject<Block> SALT_CRYSTAL = registerBlock("salt_crystal",
+            () -> new SaltClusterBlock(7, 3, BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ)
+                    .forceSolidOn().noOcclusion().sound(SoundType.CALCITE).strength(1.5F)
+                    .pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistryObject<Block> LARGE_SALT_BUD = registerBlock("large_salt_bud",
+            () -> new SaltClusterBlock(5, 3, BlockBehaviour.Properties.copy(SALT_CRYSTAL.get())));
+
+    public static final RegistryObject<Block> MEDIUM_SALT_BUD = registerBlock("medium_salt_bud",
+            () -> new SaltClusterBlock(4, 3, BlockBehaviour.Properties.copy(SALT_CRYSTAL.get())));
+
+    public static final RegistryObject<Block> SMALL_SALT_BUD = registerBlock("small_salt_bud",
+            () -> new SaltClusterBlock(3, 4, BlockBehaviour.Properties.copy(SALT_CRYSTAL.get())));
+
+
+
+    //registers
     private static <T extends Block> Supplier<T> create(String key, Supplier<T> block) {
         return BLOCKS.register(key, block);
     }

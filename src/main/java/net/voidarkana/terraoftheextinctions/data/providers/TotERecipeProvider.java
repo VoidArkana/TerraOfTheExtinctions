@@ -60,6 +60,9 @@ public class TotERecipeProvider extends RecipeProvider implements IConditionBuil
                 .define('S', TotEBlocks.STRIPPED_OLIVE_LOG.get())
                 .unlockedBy(getHasName(TotEBlocks.OLIVE_LOG.get()), has(TotEBlocks.OLIVE_LOG.get()))
                 .save(consumer);
+
+        makeIngotToBlock(TotEItems.SALT, TotEBlocks.SALT_BLOCK).save(consumer);
+        makeBlockToIngot(TotEBlocks.SALT_BLOCK, TotEItems.SALT).save(consumer);
     }
     public ShapelessRecipeBuilder makePlanks(Supplier<? extends Block> plankOut, TagKey<Item> logIn) {
         return ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, (ItemLike)plankOut.get(), 4).requires(logIn).group("planks").unlockedBy("has_log", has(logIn));
@@ -113,6 +116,22 @@ public class TotERecipeProvider extends RecipeProvider implements IConditionBuil
                 .pattern("MM")
                 .pattern("MM")
                 .define('M', (ItemLike)logIn.get()).unlockedBy("has_" + ForgeRegistries.BLOCKS.getKey((Block)logIn.get()).getPath(), has((ItemLike)logIn.get()));
+    }
+
+    public ShapedRecipeBuilder makeIngotToBlock(Supplier<? extends Item> ingotIn, Supplier<? extends Block> blockOut) {
+        return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
+                        blockOut.get())
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', ingotIn.get())
+                .unlockedBy("has_" +
+                                ForgeRegistries.ITEMS.getKey(ingotIn.get()).getPath(),
+                        has(ingotIn.get()));
+    }
+
+    public ShapelessRecipeBuilder makeBlockToIngot(Supplier<? extends Block> blockIn, Supplier<? extends Item> ingotOut) {
+        return ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, (ItemLike)ingotOut.get(), 9).requires((ItemLike)blockIn.get()).unlockedBy("has_" + ForgeRegistries.BLOCKS.getKey((Block)blockIn.get()).getPath(), has((ItemLike)blockIn.get()));
     }
 
     private ResourceLocation name(String name) {

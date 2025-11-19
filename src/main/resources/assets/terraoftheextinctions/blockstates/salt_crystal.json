@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "terraoftheextinctions:block/salt_crystal",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "terraoftheextinctions:block/salt_crystal",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "terraoftheextinctions:block/salt_crystal",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "terraoftheextinctions:block/salt_crystal",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "terraoftheextinctions:block/salt_crystal"
+    },
+    "facing=west": {
+      "model": "terraoftheextinctions:block/salt_crystal",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

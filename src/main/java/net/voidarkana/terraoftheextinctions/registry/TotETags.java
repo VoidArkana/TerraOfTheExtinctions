@@ -41,6 +41,8 @@ public class TotETags {
         public static final TagKey<Biome> IS_PERCH_BIOME = tag("perch_biomes");
         public static final TagKey<Biome> IS_CANDIRU_BIOME = tag("candiru_biomes");
 
+        public static final TagKey<Biome> IS_SALT_PILLAR_BIOME = tag("salt_pillar_biomes");
+
         private static TagKey<Biome> tag(String name){
             return TagKey.create(Registries.BIOME, new ResourceLocation(TerraOfTheExtinctions.MOD_ID, name));
         }

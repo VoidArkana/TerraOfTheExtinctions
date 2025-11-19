@@ -48,6 +48,10 @@ public class TotEItems {
             return Fluids.WATER;
         }, Items.BUCKET, false, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1));});
 
+
+    public static final RegistryObject<Item> SALT = ITEMS.register("salt",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> CANDIRU_SPAWN_EGG = ITEMS.register("candiru_spawn_egg",
             () -> new FishSpawnEggItem(TotEEntities.CANDIRU, 0x9d7a93, 0xaba4c3, new Item.Properties()));
 }

@@ -55,6 +55,13 @@ public class TotECreativeTab {
                         output.accept(TotEBlocks.OLIVE_LEAVES.get());
                         output.accept(TotEBlocks.OLIVE_SAPLING.get());
 
+                        output.accept(TotEItems.SALT.get());
+                        output.accept(TotEBlocks.SALT_BLOCK.get());
+                        output.accept(TotEBlocks.SMALL_SALT_BUD.get());
+                        output.accept(TotEBlocks.MEDIUM_SALT_BUD.get());
+                        output.accept(TotEBlocks.LARGE_SALT_BUD.get());
+                        output.accept(TotEBlocks.SALT_CRYSTAL.get());
+
                     })
                     .build());
 
