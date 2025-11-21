@@ -90,6 +90,9 @@ public class TotEBlocks {
     public static final RegistryObject<Block> PERCH_ROE = registerBlock("perch_roe",
             () -> new FishRoeBlock(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak().randomTicks(), TotEEntities.PERCH));
 
+    public static final RegistryObject<Block> GAR_ROE = registerBlock("gar_roe",
+            () -> new FishRoeBlock(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak().randomTicks(), TotEEntities.GAR));
+
     //Salt
     public static final RegistryObject<Block> SALT_BLOCK = registerBlock("salt_block",
             () -> new SaltBlock(BlockBehaviour.Properties.copy(Blocks.CALCITE)));

@@ -28,6 +28,9 @@ public class TotEItemTagGenerator extends ItemTagsProvider {
 
         this.tag(TotETags.Items.PERCH_FOOD).addTag(ItemTags.FISHES).add(TotEItems.FISH_MEAT.get());
 
+        this.tag(TotETags.Items.GAR_FOOD)
+                .add(TotEBlocks.PERCH_ROE.get().asItem());
+
         this.tag(ItemTags.LOGS_THAT_BURN)
                 .addTag(TotETags.Items.OLIVE_LOG_ITEM)
                 .addTag(TotETags.Items.GRAPE_LOG_ITEM);

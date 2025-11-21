@@ -10,6 +10,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
+import net.voidarkana.terraoftheextinctions.common.entity.animals.AlligatorGar;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.Bleak;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.Candiru;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.Perch;
@@ -24,6 +25,7 @@ public class TotEModEvents {
         event.put(TotEEntities.BLEAK.get(), Bleak.createAttributes().build());
         event.put(TotEEntities.PERCH.get(), Perch.createAttributes().build());
         event.put(TotEEntities.CANDIRU.get(), Candiru.createAttributes().build());
+        event.put(TotEEntities.GAR.get(), AlligatorGar.createAttributes().build());
     }
 
     @SubscribeEvent

@@ -91,9 +91,9 @@ public class CandiruModel<T extends Candiru> extends HierarchicalModel<T> {
 
 		if (pEntity.isInWaterOrBubble() && !pEntity.isAttached()){
 			if (pEntity.isSprinting())
-				this.animateWalk(CandiruAnims.FAST_SWIM, pLimbSwing, pLimbSwingAmount, 1.25f, 3f);
+				this.animateWalk(CandiruAnims.FAST_SWIM, pLimbSwing, pLimbSwingAmount*4, 1.25f, 3f);
 			else
-				this.animateWalk(CandiruAnims.SWIM, pLimbSwing, pLimbSwingAmount*2, 2f, 3f);
+				this.animateWalk(CandiruAnims.SWIM, pLimbSwing, pLimbSwingAmount*4, 2f, 3f);
 			this.swim_rot.xRot = pHeadPitch * ((float)Math.PI / 180F)/2;
 			this.swim_rot.zRot = pNetHeadYaw * (((float)Math.PI / 180F)/4);
 

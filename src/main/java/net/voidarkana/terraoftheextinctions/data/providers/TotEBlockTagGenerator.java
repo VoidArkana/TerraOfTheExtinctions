@@ -28,6 +28,8 @@ public class TotEBlockTagGenerator extends BlockTagsProvider {
 
         this.tag(TotETags.Blocks.PERCH_ROE_NESTS).add(Blocks.DIRT).add(Blocks.GRAVEL);
 
+        this.tag(TotETags.Blocks.GAR_ROE_NESTS).add(Blocks.DIRT).add(Blocks.GRAVEL);
+
         this.tag(TotETags.Blocks.PERCH_FOOD).add(TotEBlocks.PERCH_ROE.get());
 
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(

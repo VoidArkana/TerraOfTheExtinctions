@@ -66,6 +66,10 @@ public class TotEItems {
             return Fluids.WATER;
         }, Items.BUCKET, false, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1));});
 
+    public static final RegistryObject<Item> GAR_SPAWN_EGG = ITEMS.register("gar_spawn_egg",
+            () -> new ForgeSpawnEggItem(TotEEntities.GAR, 0x393e25, 0x8d303d, new Item.Properties()));
+    public static final RegistryObject<Item> GAR_SCALES = ITEMS.register("gar_scales",
+            () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> SALT = ITEMS.register("salt",
             () -> new Item(new Item.Properties()));

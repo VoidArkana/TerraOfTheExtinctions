@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#terraoftheextinctions:gar_biomes",
+  "spawners": {
+    "type": "terraoftheextinctions:alligator_gar",
+    "weight": 8,
+    "minCount": 1,
+    "maxCount": 3,
+    "category": "water_creature"
+  }
+}

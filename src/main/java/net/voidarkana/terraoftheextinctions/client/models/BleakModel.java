@@ -67,10 +67,12 @@ public class BleakModel<T extends Bleak> extends HierarchicalModel<T> {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 
 		if (pEntity.isInWaterOrBubble()){
-			this.animateWalk(BleakAnims.FAST_SWIM, pLimbSwing, pLimbSwingAmount, 2f, 3f);
 			this.bleak.xRot = pHeadPitch * ((float)Math.PI / 180F);
 			this.bleak.zRot = pNetHeadYaw * (((float)Math.PI / 180F)/2);
-			this.animate(pEntity.idleAnimationState, BleakAnims.SWIM, pAgeInTicks, 0.25F);
+			if (pEntity.isSprinting())
+				this.animateWalk(BleakAnims.FAST_SWIM, pLimbSwing, pLimbSwingAmount*4, 2f, 3f);
+			else
+				this.animateWalk(BleakAnims.SWIM, pLimbSwing, pLimbSwingAmount*4, 2f, 3f);
 		}else {
 			this.bleak.resetPose();
 			this.animate(pEntity.idleAnimationState, BleakAnims.FLOP, pAgeInTicks, 1F);

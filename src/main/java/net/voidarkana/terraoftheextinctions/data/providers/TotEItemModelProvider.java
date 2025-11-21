@@ -33,6 +33,9 @@ public class TotEItemModelProvider extends ItemModelProvider {
 
         withExistingParent(TotEItems.CANDIRU_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
+        simpleItem(TotEItems.GAR_SCALES);
+        withExistingParent(TotEItems.GAR_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
         // OLIVE
         simpleItem(TotEItems.OLIVES);
         simpleBlockItem(TotEBlocks.OLIVE_DOOR);

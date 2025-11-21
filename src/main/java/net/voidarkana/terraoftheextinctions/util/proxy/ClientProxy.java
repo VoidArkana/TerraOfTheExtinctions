@@ -9,10 +9,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.Mod;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
-import net.voidarkana.terraoftheextinctions.client.renderers.BleakRenderer;
-import net.voidarkana.terraoftheextinctions.client.renderers.CandiruRenderer;
-import net.voidarkana.terraoftheextinctions.client.renderers.PerchRenderer;
-import net.voidarkana.terraoftheextinctions.client.renderers.TotEBoatRenderer;
+import net.voidarkana.terraoftheextinctions.client.renderers.*;
 import net.voidarkana.terraoftheextinctions.registry.TotEEntities;
 import net.voidarkana.terraoftheextinctions.registry.TotEWoodTypes;
 
@@ -42,6 +39,7 @@ public class ClientProxy extends CommonProxy{
         EntityRenderers.register(TotEEntities.BLEAK.get(), BleakRenderer::new);
         EntityRenderers.register(TotEEntities.PERCH.get(), PerchRenderer::new);
         EntityRenderers.register(TotEEntities.CANDIRU.get(), CandiruRenderer::new);
+        EntityRenderers.register(TotEEntities.GAR.get(), GarRenderer::new);
     }
 
     @Override

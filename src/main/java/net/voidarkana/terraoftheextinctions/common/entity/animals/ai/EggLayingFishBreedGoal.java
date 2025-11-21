@@ -9,7 +9,7 @@ import net.minecraft.world.level.GameRules;
 import net.voidarkana.terraoftheextinctions.common.entity.animals.base.EggLayingFish;
 
 public class EggLayingFishBreedGoal extends FishBreedGoal {
-    private final EggLayingFish turtle;
+    public final EggLayingFish turtle;
 
     public EggLayingFishBreedGoal(EggLayingFish pTurtle, double pSpeedModifier) {
         super(pTurtle, pSpeedModifier);

@@ -22,6 +22,8 @@ public class TotEModelLayers {
             new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "perch"), "main");
     public static final ModelLayerLocation CANDIRU_LAYER = new ModelLayerLocation(
             new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "candiru"), "main");
+    public static final ModelLayerLocation GAR_LAYER = new ModelLayerLocation(
+            new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "alligator_gar"), "main");
 
     private static ModelLayerLocation create(String name) {
         return new ModelLayerLocation(new ResourceLocation(TerraOfTheExtinctions.MOD_ID, name), "main");

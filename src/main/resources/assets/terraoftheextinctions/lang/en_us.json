@@ -49,11 +49,16 @@
 
   "entity.terraoftheextinctions.candiru": "Candiru Açú",
   "item.terraoftheextinctions.candiru_spawn_egg": "Candiru Açú Spawn Egg",
-  "effect.terraoftheextinctions.candiru_infested": "Açú Parasitism",
 
+  "effect.terraoftheextinctions.candiru_infested": "Açú Parasitism",
   "death.attack.candiru_infestation": "%1$s was eaten from the inside",
   "death.attack.candiru_infestation.item": "%1$s was eaten from the inside whilst trying to escape %2$s using %3$s",
   "death.attack.candiru_infestation.player": "%1$s was eaten from the inside whilst trying to escape %2$s",
+
+  "entity.terraoftheextinctions.alligator_gar": "Alligator Gar",
+  "item.terraoftheextinctions.gar_spawn_egg": "Alligator Gar Spawn Egg",
+  "item.terraoftheextinctions.gar_scales": "Alligator Gar Scales",
+  "block.terraoftheextinctions.gar_roe": "Alligator Gar Roe",
 
   "item.terraoftheextinctions.salt": "Salt",
   "block.terraoftheextinctions.salt_block": "Salt Block",
