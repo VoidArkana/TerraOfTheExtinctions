@@ -12,6 +12,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.voidarkana.terraoftheextinctions.common.entity.TotEEntityPlacements;
 import net.voidarkana.terraoftheextinctions.common.worldgen.TotEConfiguredFeatures;
+import net.voidarkana.terraoftheextinctions.event.TotEClientModEvents;
 import net.voidarkana.terraoftheextinctions.event.TotEModEvents;
 import net.voidarkana.terraoftheextinctions.network.TotEMessages;
 import net.voidarkana.terraoftheextinctions.registry.*;
@@ -43,9 +44,11 @@ public class TerraOfTheExtinctions
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new TotEModEvents());
+        MinecraftForge.EVENT_BUS.register(new TotEClientModEvents());
 
         bus.addListener(this::commonSetup);
         bus.addListener(this::clientSetup);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -66,6 +69,8 @@ public class TerraOfTheExtinctions
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        event.enqueueWork(() -> PROXY.clientInit());
+        event.enqueueWork(() -> {
+            PROXY.clientInit();
+        });
     }
 }

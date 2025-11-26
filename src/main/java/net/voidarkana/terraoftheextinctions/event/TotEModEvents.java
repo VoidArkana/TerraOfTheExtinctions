@@ -57,8 +57,7 @@ public class TotEModEvents {
 
         if (player.isUnderWater() && !player.isCreative() && player.level() instanceof ServerLevel level){
             if (player.getY() <= crushDepth && TerraOfTheExtinctions.PROXY.canPlayerBeCrushed(player, level)){
-                if (player.tickCount % 30 == 0){
-                    level.playSound(player, player.blockPosition(), SoundEvents.PLAYER_HURT_DROWN, SoundSource.PLAYERS, 0.4F, 2.0F + player.getRandom().nextFloat() * 0.4F);
+                if (player.tickCount % 20 == 0){
                     player.hurt(level.damageSources().source(TotEDamageTypes.BAROTRAUMA, player), 2);
                 }
             }
