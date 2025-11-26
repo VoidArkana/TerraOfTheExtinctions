@@ -25,6 +25,7 @@ public class TotEBiomeTagGenerator extends BiomeTagsProvider {
         this.tag(TotETags.Biomes.IS_PERCH_BIOME).addTag(BiomeTags.IS_RIVER);
         this.tag(TotETags.Biomes.IS_CANDIRU_BIOME).addTag(BiomeTags.IS_JUNGLE).add(Biomes.MANGROVE_SWAMP);
         this.tag(TotETags.Biomes.IS_GAR_BIOME).addTag(BiomeTags.IS_RIVER).addTag(Tags.Biomes.IS_SWAMP);
+        this.tag(TotETags.Biomes.IS_COELACANTH_BIOME).addTag(BiomeTags.IS_DEEP_OCEAN);
 
         this.tag(TotETags.Biomes.IS_SALT_PILLAR_BIOME).addTag(BiomeTags.IS_BEACH);
     }

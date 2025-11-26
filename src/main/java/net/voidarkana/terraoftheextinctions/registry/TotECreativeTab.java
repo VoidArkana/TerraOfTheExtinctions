@@ -18,6 +18,7 @@ public class TotECreativeTab {
                     .title(Component.translatable("creativetab.terraoftheextinctions"))
                     .displayItems((itemDisplayParameters, output) -> {
 
+                        output.accept(TotEItems.COELACANTH_SPAWN_EGG.get());
                         output.accept(TotEItems.GAR_SPAWN_EGG.get());
                         output.accept(TotEItems.BLEAK_SPAWN_EGG.get());
                         output.accept(TotEItems.CANDIRU_SPAWN_EGG.get());
@@ -25,6 +26,8 @@ public class TotECreativeTab {
 
                         output.accept(TotEItems.FISH_MEAT.get());
                         output.accept(TotEItems.COOKED_FISH_MEAT.get());
+
+                        output.accept(TotEItems.COELACANTH_SCALES.get());
 
                         output.accept(TotEItems.GAR_SCALES.get());
                         output.accept(TotEBlocks.GAR_ROE.get());

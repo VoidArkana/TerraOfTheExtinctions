@@ -33,6 +33,7 @@ public class TotETags {
         public static final TagKey<Item> GRAPE_LOG_ITEM = tag("grape_log_item");
 
         public static final TagKey<Item> PERCH_FOOD = tag("perch_food");
+        public static final TagKey<Item> COELACANTH_FOOD = tag("coelacanth_food");
         public static final TagKey<Item> GAR_FOOD = tag("gar_food");
 
         private static TagKey<Item> tag(String name){
@@ -45,6 +46,7 @@ public class TotETags {
         public static final TagKey<Biome> IS_PERCH_BIOME = tag("perch_biomes");
         public static final TagKey<Biome> IS_CANDIRU_BIOME = tag("candiru_biomes");
         public static final TagKey<Biome> IS_GAR_BIOME = tag("alligator_gar_biomes");
+        public static final TagKey<Biome> IS_COELACANTH_BIOME = tag("coelacanth_biomes");
 
         public static final TagKey<Biome> IS_SALT_PILLAR_BIOME = tag("salt_pillar_biomes");
 

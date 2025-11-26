@@ -8,4 +8,5 @@ import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
 
 public class TotEDamageTypes {
     public static final ResourceKey<DamageType> CANDIRU_INFESTATION = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "candiru_infestation"));
+    public static final ResourceKey<DamageType> BAROTRAUMA = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "barotrauma"));
 }

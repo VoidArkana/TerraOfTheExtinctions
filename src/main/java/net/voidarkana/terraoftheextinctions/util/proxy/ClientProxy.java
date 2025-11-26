@@ -3,6 +3,10 @@ package net.voidarkana.terraoftheextinctions.util.proxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
@@ -40,6 +44,7 @@ public class ClientProxy extends CommonProxy{
         EntityRenderers.register(TotEEntities.PERCH.get(), PerchRenderer::new);
         EntityRenderers.register(TotEEntities.CANDIRU.get(), CandiruRenderer::new);
         EntityRenderers.register(TotEEntities.GAR.get(), GarRenderer::new);
+        EntityRenderers.register(TotEEntities.COELACANTH.get(), CoelacanthRenderer::new);
     }
 
     @Override
@@ -51,4 +56,24 @@ public class ClientProxy extends CommonProxy{
         return Minecraft.getInstance().player;
     }
 
+    int clientTicksUnderwater;
+
+    public int getTicksUnderwater() {
+        return this.clientTicksUnderwater;
+    }
+
+    public void setTicksUnderwater(int ticks) {
+        this.clientTicksUnderwater = ticks;
+    }
+
+    public boolean canPlayerBeCrushed(Player player, Level level){
+       BlockPos pos = player.blockPosition();
+
+       for (int i = 1; i<=6; i++){
+           if (!level.getBlockState(pos.above(i)).getFluidState().is(FluidTags.WATER)){
+               return !level.getBlockState(pos.above(i)).isAir();
+           }
+       }
+       return true;
+    }
 }

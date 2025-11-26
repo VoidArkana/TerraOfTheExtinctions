@@ -35,6 +35,7 @@ public class TotEDataGenerators {
 
         generator.addProvider(event.includeServer(),new TotEItemTagGenerator(packOutput, lookupProvider, blockTagGenerator.contentsGetter(), existingFileHelper));
         generator.addProvider(event.includeClient(), new TotEBiomeTagGenerator(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeClient(), new TotEDamageTypeTagGenerator(packOutput, lookupProvider, existingFileHelper));
 
         generator.addProvider(event.includeServer(), new TotEWorldGenProvider(packOutput, lookupProvider));
     }

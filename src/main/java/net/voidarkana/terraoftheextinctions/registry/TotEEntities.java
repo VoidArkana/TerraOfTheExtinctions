@@ -8,10 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
-import net.voidarkana.terraoftheextinctions.common.entity.animals.AlligatorGar;
-import net.voidarkana.terraoftheextinctions.common.entity.animals.Bleak;
-import net.voidarkana.terraoftheextinctions.common.entity.animals.Candiru;
-import net.voidarkana.terraoftheextinctions.common.entity.animals.Perch;
+import net.voidarkana.terraoftheextinctions.common.entity.animals.*;
 import net.voidarkana.terraoftheextinctions.common.entity.boats.TotEBoatEntity;
 import net.voidarkana.terraoftheextinctions.common.entity.boats.TotEChestBoatEntity;
 
@@ -49,6 +46,12 @@ public class TotEEntities {
                     () -> EntityType.Builder.of(AlligatorGar::new, MobCategory.WATER_AMBIENT)
                             .sized(2f, 0.75f)
                             .build(new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "alligator_gar").toString()));
+
+    public static final RegistryObject<EntityType<Coelacanth>> COELACANTH =
+            ENTITY_TYPES.register("coelacanth",
+                    () -> EntityType.Builder.of(Coelacanth::new, MobCategory.WATER_AMBIENT)
+                            .sized(1.25f, 0.75f)
+                            .build(new ResourceLocation(TerraOfTheExtinctions.MOD_ID, "coelacanth").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

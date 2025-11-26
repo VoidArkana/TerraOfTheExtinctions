@@ -10,10 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
 import net.voidarkana.terraoftheextinctions.client.TotEModelLayers;
-import net.voidarkana.terraoftheextinctions.client.models.BleakModel;
-import net.voidarkana.terraoftheextinctions.client.models.CandiruModel;
-import net.voidarkana.terraoftheextinctions.client.models.GarModel;
-import net.voidarkana.terraoftheextinctions.client.models.PerchModel;
+import net.voidarkana.terraoftheextinctions.client.models.*;
 import net.voidarkana.terraoftheextinctions.registry.TotEBlockEntities;
 
 @Mod.EventBusSubscriber(modid = TerraOfTheExtinctions.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -31,6 +28,7 @@ public class TotEEventBusClientEvents {
         event.registerLayerDefinition(TotEModelLayers.PERCH_LAYER, PerchModel::createBodyLayer);
         event.registerLayerDefinition(TotEModelLayers.CANDIRU_LAYER, CandiruModel::createBodyLayer);
         event.registerLayerDefinition(TotEModelLayers.GAR_LAYER, GarModel::createBodyLayer);
+        event.registerLayerDefinition(TotEModelLayers.COELACANTH_LAYER, CoelacanthModel::createBodyLayer);
     }
 
     @SubscribeEvent

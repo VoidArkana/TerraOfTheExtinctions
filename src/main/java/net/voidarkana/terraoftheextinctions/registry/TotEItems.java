@@ -66,16 +66,23 @@ public class TotEItems {
             return Fluids.WATER;
         }, Items.BUCKET, false, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1));});
 
+    public static final RegistryObject<Item> CANDIRU_SPAWN_EGG = ITEMS.register("candiru_spawn_egg",
+            () -> new FishSpawnEggItem(TotEEntities.CANDIRU, 0x9d7a93, 0xaba4c3, new Item.Properties()));
+
     public static final RegistryObject<Item> GAR_SPAWN_EGG = ITEMS.register("gar_spawn_egg",
             () -> new ForgeSpawnEggItem(TotEEntities.GAR, 0x393e25, 0x8d303d, new Item.Properties()));
     public static final RegistryObject<Item> GAR_SCALES = ITEMS.register("gar_scales",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> COELACANTH_SPAWN_EGG = ITEMS.register("coelacanth_spawn_egg",
+            () -> new ForgeSpawnEggItem(TotEEntities.COELACANTH, 0x353849, 0x545c79, new Item.Properties()));
+    public static final RegistryObject<Item> COELACANTH_SCALES = ITEMS.register("coelacanth_scales",
+            () -> new Item(new Item.Properties()));
+
+
     public static final RegistryObject<Item> SALT = ITEMS.register("salt",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> CANDIRU_SPAWN_EGG = ITEMS.register("candiru_spawn_egg",
-            () -> new FishSpawnEggItem(TotEEntities.CANDIRU, 0x9d7a93, 0xaba4c3, new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

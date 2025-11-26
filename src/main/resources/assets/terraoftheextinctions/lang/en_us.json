@@ -60,6 +60,9 @@
   "item.terraoftheextinctions.gar_scales": "Alligator Gar Scales",
   "block.terraoftheextinctions.gar_roe": "Alligator Gar Roe",
 
+  "entity.terraoftheextinctions.coelacanth": "Coelacanth",
+  "item.terraoftheextinctions.coelacanth_spawn_egg": "Coelacanth Spawn Egg",
+
   "item.terraoftheextinctions.salt": "Salt",
   "block.terraoftheextinctions.salt_block": "Salt Block",
   "block.terraoftheextinctions.small_salt_bud": "Small Salt Bud",
@@ -95,5 +98,9 @@
   "block.terraoftheextinctions.potted_grape_sapling": "Potted Grape Sapling",
 
   "item.terraoftheextinctions.grape_boat": "Grape Boat",
-  "item.terraoftheextinctions.grape_chest_boat": "Grape Boat with Chest"
+  "item.terraoftheextinctions.grape_chest_boat": "Grape Boat with Chest",
+
+  "death.attack.barotrauma": "%1$s couldn't stand the pressure",
+  "death.attack.barotrauma.item": "%1$s couldn't stand the pressure whilst trying to escape %2$s using %3$s",
+  "death.attack.barotrauma.player": "%1$s couldn't stand the pressure whilst trying to escape %2$s"
 }
