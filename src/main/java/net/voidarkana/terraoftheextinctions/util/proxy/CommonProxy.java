@@ -23,6 +23,7 @@ public class CommonProxy {
     }
 
     public void clientInit() {
+
     }
 
     public Level getWorld() {
@@ -44,7 +45,7 @@ public class CommonProxy {
     }
 
     public int getMaxTicksUnderwater() {
-        return 20;
+        return 200;
     }
 
     public boolean canPlayerBeCrushed(Player player, Level level){

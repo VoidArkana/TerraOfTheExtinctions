@@ -53,14 +53,36 @@ public class TotEModEvents {
     @SubscribeEvent
     public void serverTick(TickEvent.PlayerTickEvent event){
         Player player = event.player;
+        int prevTicks;
         final int crushDepth = 40;
 
-        if (player.isUnderWater() && !player.isCreative() && player.level() instanceof ServerLevel level){
-            if (player.getY() <= crushDepth && TerraOfTheExtinctions.PROXY.canPlayerBeCrushed(player, level)){
-                if (player.tickCount % 20 == 0){
-                    player.hurt(level.damageSources().source(TotEDamageTypes.BAROTRAUMA, player), 2);
+        if (player.isUnderWater()){
+
+            if (player.getY() <= crushDepth && TerraOfTheExtinctions.PROXY.canPlayerBeCrushed(player, player.level())){
+
+                if (player.level() instanceof ServerLevel level && !player.isCreative()){
+                    if (player.tickCount % 20 == 0){
+                        player.hurt(level.damageSources().source(TotEDamageTypes.BAROTRAUMA, player), 2);
+                    }
                 }
+
+                prevTicks = TerraOfTheExtinctions.PROXY.getTicksUnderwater();
+
+                if (player.getY() <= crushDepth && TerraOfTheExtinctions.PROXY.canPlayerBeCrushed(player, player.level())) {
+                    if (prevTicks<TerraOfTheExtinctions.PROXY.getMaxTicksUnderwater())
+                        TerraOfTheExtinctions.PROXY.setTicksUnderwater(prevTicks+1);
+                }else {
+                    TerraOfTheExtinctions.PROXY.setTicksUnderwater(prevTicks-1);
+                }
+            }else if (TerraOfTheExtinctions.PROXY.getTicksUnderwater() > 0){
+                prevTicks = TerraOfTheExtinctions.PROXY.getTicksUnderwater();
+
+                TerraOfTheExtinctions.PROXY.setTicksUnderwater(prevTicks-1);
             }
+        }else if (TerraOfTheExtinctions.PROXY.getTicksUnderwater() > 0){
+            prevTicks = TerraOfTheExtinctions.PROXY.getTicksUnderwater();
+
+            TerraOfTheExtinctions.PROXY.setTicksUnderwater(prevTicks-1);
         }
     }
 

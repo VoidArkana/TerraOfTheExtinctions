@@ -1,11 +1,14 @@
 package net.voidarkana.terraoftheextinctions.event;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.voidarkana.terraoftheextinctions.TerraOfTheExtinctions;
@@ -13,7 +16,7 @@ import net.voidarkana.terraoftheextinctions.client.TotEModelLayers;
 import net.voidarkana.terraoftheextinctions.client.models.*;
 import net.voidarkana.terraoftheextinctions.registry.TotEBlockEntities;
 
-@Mod.EventBusSubscriber(modid = TerraOfTheExtinctions.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = TerraOfTheExtinctions.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class TotEEventBusClientEvents {
 
     @SubscribeEvent
@@ -35,5 +38,36 @@ public class TotEEventBusClientEvents {
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(TotEBlockEntities.MOD_SIGN.get(), SignRenderer::new);
         event.registerBlockEntityRenderer(TotEBlockEntities.MOD_HANGING_SIGN.get(), HangingSignRenderer::new);
+    }
+
+    @SubscribeEvent
+    public void onClientTick(TickEvent.ClientTickEvent event) {
+        Player player = Minecraft.getInstance().player;
+        int prevTicks;
+        int crushDepth = 40;
+
+        if (player != null){
+            if (player.isUnderWater()) {
+
+                if (TerraOfTheExtinctions.PROXY.getTicksUnderwater() < TerraOfTheExtinctions.PROXY.getMaxTicksUnderwater() &&
+                        TerraOfTheExtinctions.PROXY.getTicksUnderwater() > 0){
+
+                    prevTicks = TerraOfTheExtinctions.PROXY.getTicksUnderwater();
+
+                    if (player.getY() <= crushDepth && TerraOfTheExtinctions.PROXY.canPlayerBeCrushed(player, player.level())) {
+                        if (prevTicks<TerraOfTheExtinctions.PROXY.getMaxTicksUnderwater())
+                            TerraOfTheExtinctions.PROXY.setTicksUnderwater(prevTicks+1);
+                    }else {
+                        TerraOfTheExtinctions.PROXY.setTicksUnderwater(prevTicks-1);
+                    }
+
+                }
+            }else if (TerraOfTheExtinctions.PROXY.getTicksUnderwater() > 0){
+                prevTicks = TerraOfTheExtinctions.PROXY.getTicksUnderwater();
+
+                TerraOfTheExtinctions.PROXY.setTicksUnderwater(prevTicks-1);
+            }
+        }
+
     }
 }
