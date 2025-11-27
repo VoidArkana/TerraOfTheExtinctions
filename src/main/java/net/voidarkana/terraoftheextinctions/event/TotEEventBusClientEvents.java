@@ -47,7 +47,7 @@ public class TotEEventBusClientEvents {
         int crushDepth = 40;
 
         if (player != null){
-            if (player.isUnderWater()) {
+            if (player.isUnderWater() && !player.isCreative()) {
 
                 if (TerraOfTheExtinctions.PROXY.getTicksUnderwater() < TerraOfTheExtinctions.PROXY.getMaxTicksUnderwater() &&
                         TerraOfTheExtinctions.PROXY.getTicksUnderwater() > 0){

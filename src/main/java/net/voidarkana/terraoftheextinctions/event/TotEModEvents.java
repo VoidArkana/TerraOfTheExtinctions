@@ -56,11 +56,11 @@ public class TotEModEvents {
         int prevTicks;
         final int crushDepth = 40;
 
-        if (player.isUnderWater()){
+        if (player.isUnderWater() && !player.isCreative()){
 
-            if (player.getY() <= crushDepth && TerraOfTheExtinctions.PROXY.canPlayerBeCrushed(player, player.level())){
+            if (player.getY() <= crushDepth && TerraOfTheExtinctions.PROXY.canPlayerBeCrushed(player, player.level()) ){
 
-                if (player.level() instanceof ServerLevel level && !player.isCreative()){
+                if (player.level() instanceof ServerLevel level ){
                     if (player.tickCount % 20 == 0){
                         player.hurt(level.damageSources().source(TotEDamageTypes.BAROTRAUMA, player), 2);
                     }
